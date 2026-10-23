@@ -38,7 +38,7 @@ window.MONACHI = {
     },
     {
       id: "baking-2026", code: "BK", status: "soon", theme: "baking",
-      title: "Little Baker Bakery Workshop", kicker: "Baking & chocolate workshop",
+      title: "Little Baker Bakery Workshop", kicker: "Kids workshop",
       lede: "Little chefs mix, bake and decorate treats, and make chocolates to take home.",
       when: "November & December 2026",
       flyer: "assets/flyers/little-baker.jpg"

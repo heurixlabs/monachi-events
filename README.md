@@ -5,8 +5,8 @@ Google Sheets + Google Apps Script, with Razorpay for online payments.
 
 ## What's on the site
 - **Booking now:** Halloween Party · Sat 31 Oct 2026, 5–7 PM · ages 4–14 · ₹250 per child · Sunbeam Pre School premises
-- **Coming soon** (with "Notify me"): Diwali DIY Party, Kids Baking & Chocolate Workshop (Nov–Dec), Christmas Party, New Year Bash
-- **Past workshops:** DIY pipe-cleaner flowers, cookie baking, clay, tie & dye
+- **Coming soon** (with "Notify me"): Diwali DIY Party, Little Baker Bakery Workshop (Nov–Dec), Christmas Party, New Year Bash
+- **Past workshops:** DIY pipe-cleaner flowers, Kids Baker Class (June 2026), clay, tie & dye
 - **Private parties:** Birthday Party DIY and Kitty Party DIY enquiry form
 - **My pass:** parents fetch their Party Pass again with booking code + phone
 
