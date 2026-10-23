@@ -63,8 +63,8 @@ window.MONACHI = {
   PAST: [
     { title: "DIY Flower Workshop", detail: "Flowers made from pipe cleaners", photos: ["assets/workshops/flowers-1.jpg", "assets/workshops/flowers-2.jpg"] },
     { title: "Kids Baker Class", detail: "12 June 2026 · little chefs baked chocolate cookies", photos: ["assets/flyers/kids-baker-class-jun-2026.jpg", "assets/workshops/cookies-1.jpg", "assets/workshops/cookies-2.jpg"] },
-    { title: "Clay Workshop", detail: "Shaping and painting clay models", photos: [], art: "clay" },
-    { title: "Tie & Dye Workshop", detail: "Colourful tie and dye T-shirts and bags", photos: [], art: "tiedye" }
+    { title: "Clay Workshop", detail: "Kids sculpted their own superhero figures from clay", photos: ["assets/workshops/clay-1.jpg", "assets/workshops/clay-2.jpg"], art: "clay" },
+    { title: "Tie & Dye Workshop", detail: "Tied, dyed and unwrapped their own colourful cloths", photos: ["assets/workshops/tiedye-1.jpg", "assets/workshops/tiedye-3.jpg", "assets/workshops/tiedye-2.jpg"], art: "tiedye" }
   ],
 
   // Private party enquiries.
