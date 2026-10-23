@@ -1,20 +1,34 @@
 # MONACHI Events
 
-Booking website for MONACHI ("Crafting Celebrations") kids and family events.
+Booking website for MONACHI ("Crafting Celebrations") kids and family events. Free to run: GitHub Pages +
+Google Sheets + Google Apps Script, with Razorpay for online payments.
 
-- **Live now:** Halloween Party · Sat 31 Oct 2026, 5–7 PM · ages 4–14 · ₹250 per child · Sunbeam Pre School premises
-- **Coming soon:** Diwali Celebration
+## What's on the site
+- **Booking now:** Halloween Party · Sat 31 Oct 2026, 5–7 PM · ages 4–14 · ₹250 per child · Sunbeam Pre School premises
+- **Coming soon** (with "Notify me"): Diwali DIY Party, Kids Baking & Chocolate Workshop (Nov–Dec), Christmas Party, New Year Bash
+- **Past workshops:** DIY pipe-cleaner flowers, cookie baking, clay, tie & dye
+- **Private parties:** Birthday Party DIY and Kitty Party DIY enquiry form
+- **My pass:** parents fetch their Party Pass again with booking code + phone
 
 ## How booking works
-1. Parent fills in the form (parent name, WhatsApp number, each child's name and age).
-2. The booking is sent to MONACHI on WhatsApp (+91 72170 54807) as a ready-made message with a booking code.
-3. The page shows the Google Pay / UPI QR code and a pay button with the amount and booking code filled in.
-4. The parent sends the payment screenshot; MONACHI confirms and sends each child's Party Pass on WhatsApp.
+**Online mode** (after [SETUP.md](SETUP.md)): parent fills the form → pays with Razorpay (UPI, card, net banking) →
+Party Pass appears on the page (download PDF or share to WhatsApp) → PDF pass emailed to the parent →
+MONACHI gets an email and WhatsApp alert → booking saved as **Paid** in the Google Sheet.
 
-## Editing events
-Open `index.html` and edit the `EVENTS` list near the bottom. Set `status: "open"` to take bookings or `status: "soon"` for a coming-soon card.
+**WhatsApp + UPI mode** (until setup is done): parent fills the form → sends the booking on WhatsApp →
+pays with the Google Pay QR → MONACHI confirms and sends the pass.
 
-## Hosting
-Static site, hosted free on GitHub Pages (Settings → Pages → Deploy from branch `main`, folder `/`).
+## Files
+| File | What it is |
+|---|---|
+| `index.html` | the page |
+| `config.js` | **edit this**: events, prices shown, contact details, backend URL, Razorpay Key ID |
+| `app.js` | booking, payment, notify and enquiry logic |
+| `pass.js` | Party Pass design and the illustrated event cards |
+| `apps-script/Code.gs` | free backend: paste into Google Apps Script (see SETUP.md) |
+| `assets/` | poster, QR code, workshop photos |
+
+Add workshop photos to `assets/workshops/` and list them under `PAST` in `config.js`.
+Use photos of crafts and hands, or get parents' permission before showing children's faces.
 
 Instagram: [@monachi.crafts](https://www.instagram.com/monachi.crafts/)
