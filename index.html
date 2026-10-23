@@ -90,6 +90,12 @@ section.block { padding-bottom: 52px; }
 .art { aspect-ratio: 16 / 10; max-width: 100%; position: relative; display: grid; place-items: center; overflow: hidden; }
 .art img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .art svg { width: 100%; height: 100%; display: block; }
+.art.flyer { aspect-ratio: 2 / 3; }
+.zoom { all: unset; display: block; width: 100%; height: 100%; cursor: zoom-in; }
+.zoom:focus-visible { outline: 3px solid var(--teal); outline-offset: -3px; }
+.viewer { position: fixed; inset: 0; z-index: 30; background: rgba(10, 8, 20, .88); display: grid; place-items: center; padding: 16px; }
+.viewer img { max-width: min(100%, 900px); max-height: calc(100vh - 90px); width: auto; height: auto; border-radius: 12px; }
+.viewer .btn { position: absolute; top: max(14px, env(safe-area-inset-top, 0px)); right: max(14px, env(safe-area-inset-right, 0px)); background: #FFF9EF; color: #1D2240; }
 .art .badge { position: absolute; left: 12px; top: 12px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 4px 10px; border-radius: 99px; background: rgba(255, 249, 239, .92); color: #1D2240; }
 .soon .txt { padding: 16px 18px 18px; display: grid; gap: 6px; flex: 1; align-content: start; }
 .soon .kicker { font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
@@ -163,7 +169,7 @@ legend { font-size: 13.5px; font-weight: 500; padding: 0; margin-bottom: 10px; }
 /* past workshops */
 .past { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 16px; }
 .past article { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
-.past .art { aspect-ratio: 4 / 3; }
+.past .art { aspect-ratio: 3 / 2; }
 .past .txt { padding: 14px 16px 16px; display: grid; gap: 2px; }
 .past h3 { font-family: var(--f-brand); font-weight: 600; font-size: 19px; }
 .past p { margin: 0; color: var(--muted); font-size: 13.5px; }
@@ -371,6 +377,11 @@ footer .gold { color: #E3C27F; }
     </div>
   </section>
 </main>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="Flyer">
+  <img id="viewer-img" alt="">
+  <button class="btn btn-sm" type="button" id="viewer-close">Close</button>
+</div>
 
 <div class="sheet" id="notify" hidden role="dialog" aria-modal="true" aria-labelledby="n-h">
   <div class="sheet-card">

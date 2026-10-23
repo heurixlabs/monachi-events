@@ -46,7 +46,7 @@ function renderEvents() {
 
   $("#soon-list").innerHTML = soon.map((e) => `
     <article class="soon" id="${e.id}">
-      <div class="art">${e.photo ? `<img src="${e.photo}" alt="" loading="lazy">` : eventArt(e.theme)}<span class="badge">Coming soon</span></div>
+      <div class="art${e.flyer ? " flyer" : ""}">${e.flyer ? `<button class="zoom" type="button" data-view="${e.flyer}" aria-label="View ${esc(e.title)} flyer"><img src="${e.flyer}" alt="${esc(e.title)} flyer" loading="lazy" width="900" height="1350"></button>` : e.photo ? `<img src="${e.photo}" alt="" loading="lazy">` : eventArt(e.theme)}${e.flyer ? "" : `<span class="badge">Coming soon</span>`}</div>
       <div class="txt">
         <span class="kicker">${esc(e.kicker || "")}</span>
         <h3>${esc(e.title)}</h3>
@@ -60,7 +60,7 @@ function renderEvents() {
 function renderPast() {
   $("#past-list").innerHTML = M.PAST.map((w, i) => `
     <article>
-      <div class="art" id="past-art-${i}">${w.photos.length ? `<img src="${w.photos[0]}" alt="${esc(w.title)}" loading="lazy">` : eventArt(w.art) + `<span class="ph-note">Photos coming soon</span>`}</div>
+      <div class="art" id="past-art-${i}">${w.photos.length ? `<button class="zoom" type="button" data-view="${w.photos[0]}" aria-label="View ${esc(w.title)} photo"><img src="${w.photos[0]}" alt="${esc(w.title)}" loading="lazy"></button>` : eventArt(w.art) + `<span class="ph-note">Photos coming soon</span>`}</div>
       <div class="txt"><h3>${esc(w.title)}</h3><p>${esc(w.detail)}</p></div>
       ${w.photos.length > 1 ? `<div class="thumbs">${w.photos.map((p, j) => `<button type="button" aria-label="Photo ${j + 1}" aria-pressed="${j === 0}" data-past="${i}" data-src="${p}"><img src="${p}" alt="" loading="lazy"></button>`).join("")}</div>` : ""}
     </article>`).join("");
@@ -251,7 +251,8 @@ function openNotify(id) {
 }
 $("#n-close").addEventListener("click", () => ($("#notify").hidden = true));
 $("#notify").addEventListener("click", (e) => { if (e.target.id === "notify") $("#notify").hidden = true; });
-document.addEventListener("keydown", (e) => { if (e.key === "Escape") $("#notify").hidden = true; });
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") { $("#notify").hidden = true; $("#viewer").hidden = true; } });
+$("#viewer").addEventListener("click", (e) => { if (e.target.id === "viewer" || e.target.id === "viewer-close") $("#viewer").hidden = true; });
 $("#n-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const m = $("#n-msg"), name = $("#n-name").value.trim(), phone = cleanPhone($("#n-phone").value), email = $("#n-email").value.trim();
@@ -282,7 +283,8 @@ document.addEventListener("click", (e) => {
   const b = e.target.closest("[data-book]"); if (b && $("#event")) { $("#event").value = b.dataset.book; updateTotal(); }
   const n = e.target.closest("[data-notify]"); if (n) openNotify(n.dataset.notify);
   const t = e.target.closest("[data-past]");
-  if (t) { const i = t.dataset.past; $(`#past-art-${i} img`).src = t.dataset.src; t.parentElement.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === t))); }
+  const z = e.target.closest("[data-view]"); if (z) { $("#viewer-img").src = z.dataset.view; $("#viewer").hidden = false; $("#viewer-close").focus(); }
+  if (t) { const i = t.dataset.past; $(`#past-art-${i} img`).src = t.dataset.src; $(`#past-art-${i} .zoom`).dataset.view = t.dataset.src; t.parentElement.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === t))); }
 });
 
 renderEvents(); renderPast(); renderParties();

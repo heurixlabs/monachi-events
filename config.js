@@ -33,33 +33,36 @@ window.MONACHI = {
       id: "diwali-2026", code: "DW", status: "soon", theme: "diwali",
       title: "Diwali DIY Party", kicker: "Kids & family",
       lede: "Diya painting, rangoli and festive crafts for children and families.",
-      when: "November 2026 · date coming soon"
+      when: "November 2026 · date coming soon",
+      flyer: "assets/flyers/diwali.jpg"
     },
     {
       id: "baking-2026", code: "BK", status: "soon", theme: "baking",
-      title: "Kids Baking & Chocolate Workshop", kicker: "Workshop",
-      lede: "Little chefs bake cookies and make their own chocolates to take home.",
+      title: "Little Baker Bakery Workshop", kicker: "Baking & chocolate workshop",
+      lede: "Little chefs mix, bake and decorate treats, and make chocolates to take home.",
       when: "November & December 2026",
-      photo: "assets/workshops/cookies-1.jpg"
+      flyer: "assets/flyers/little-baker.jpg"
     },
     {
       id: "christmas-2026", code: "XM", status: "soon", theme: "christmas",
       title: "Christmas Party", kicker: "Kids party",
       lede: "Ornament making, Christmas crafts, games and a visit from Santa.",
-      when: "December 2026 · date coming soon"
+      when: "December 2026 · date coming soon",
+      flyer: "assets/flyers/christmas.jpg"
     },
     {
       id: "newyear-2026", code: "NY", status: "soon", theme: "newyear",
       title: "New Year Bash", kicker: "Kids & family",
       lede: "Party hats, countdown crafts, music and games to welcome 2027.",
-      when: "Late December 2026 · date coming soon"
+      when: "Late December 2026 · date coming soon",
+      flyer: "assets/flyers/newyear.jpg"
     }
   ],
 
   // Previous workshops shown in the gallery. Add photos to assets/workshops/ and list them here.
   PAST: [
     { title: "DIY Flower Workshop", detail: "Flowers made from pipe cleaners", photos: ["assets/workshops/flowers-1.jpg", "assets/workshops/flowers-2.jpg"] },
-    { title: "Cookie Baking Workshop", detail: "Little chefs baked chocolate cookies", photos: ["assets/workshops/cookies-1.jpg", "assets/workshops/cookies-2.jpg"] },
+    { title: "Kids Baker Class", detail: "12 June 2026 · little chefs baked chocolate cookies", photos: ["assets/flyers/kids-baker-class-jun-2026.jpg", "assets/workshops/cookies-1.jpg", "assets/workshops/cookies-2.jpg"] },
     { title: "Clay Workshop", detail: "Shaping and painting clay models", photos: [], art: "clay" },
     { title: "Tie & Dye Workshop", detail: "Colourful tie and dye T-shirts and bags", photos: [], art: "tiedye" }
   ],
