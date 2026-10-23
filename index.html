@@ -3,78 +3,75 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="MONACHI Events: book kids' Halloween Party, Diwali, Christmas and New Year celebrations. Crafting Celebrations.">
+<title>MONACHI Events</title>
+<meta name="description" content="MONACHI Events: kids' Halloween Party, Diwali DIY Party, baking and chocolate workshop, Christmas and New Year celebrations. Book online and get your Party Pass instantly.">
 <meta property="og:title" content="MONACHI Events · Halloween Party booking open">
 <meta property="og:description" content="Sat 31 Oct, 5–7 PM · Ages 4–14 · ₹250 per child · Sunbeam Pre School premises">
 <meta property="og:image" content="assets/og-image.jpg">
 <meta name="theme-color" content="#1B1335">
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}</style>
-<title>MONACHI Events</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap">
-</head>
-<body>
 <style>
-/* Layout: ivory events hub. Wordmark header with the logo's colour strip, event cards, then one booking form that hands off to WhatsApp. */
+/* Layout: ivory events hub. Wordmark header with the logo's colour strip, live event, coming-soon grid,
+   booking with online payment and instant Party Pass, past workshops, private party enquiries. */
 :root {
   --bg: #FBF6EC; --surface: #FFFFFF; --ink: #1D2240; --muted: #66657A; --line: #E7DDC9; --gold: #B8924A;
   --pink: #E0306A; --orange: #F08C00; --teal: #009CA6; --purple: #6A3FA0; --navy: #1D2240;
   --night: #1B1335; --night-ink: #F7EEDD; --night-muted: #C8BEDC; --field: #FFFFFF; --error: #C0263F; --ok: #157F5B;
+  --chip: #F3ECDD; --sheet-bg: rgba(20, 16, 36, .55);
   --f-display: "Playfair Display", Georgia, "Times New Roman", serif;
   --f-brand: "Fredoka", "Poppins", system-ui, sans-serif;
   --f-body: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+  padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px);
 }
-@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+@media (prefers-color-scheme: dark) { :root {
   --bg: #15121E; --surface: #1F1A2C; --ink: #F3ECDF; --muted: #ABA4BA; --line: #362E49; --gold: #D6B675;
-  --navy: #0E0B18; --night: #110C22; --night-ink: #F7EEDD; --night-muted: #C8BEDC; --field: #191524; --error: #FF7A8E; --ok: #5BD1A4;
-  --pink: #F0508A; --orange: #FFA22E; --teal: #2BC1C9; --purple: #A27BE0; color-scheme: dark } }
-:root[data-theme="dark"] {
-  --bg: #15121E; --surface: #1F1A2C; --ink: #F3ECDF; --muted: #ABA4BA; --line: #362E49; --gold: #D6B675;
-  --navy: #0E0B18; --night: #110C22; --night-ink: #F7EEDD; --night-muted: #C8BEDC; --field: #191524; --error: #FF7A8E; --ok: #5BD1A4;
-  --pink: #F0508A; --orange: #FFA22E; --teal: #2BC1C9; --purple: #A27BE0; color-scheme: dark }
+  --navy: #0E0B18; --night: #110C22; --field: #191524; --error: #FF7A8E; --ok: #5BD1A4; --chip: #2A2340;
+  --pink: #F0508A; --orange: #FFA22E; --teal: #2BC1C9; --purple: #A27BE0; --sheet-bg: rgba(0, 0, 0, .65); color-scheme: dark } }
 
 * { box-sizing: border-box; }
 [hidden] { display: none !important; }
-body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.6; }
-.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.6; }
+img { max-width: 100%; }
+.wrap { max-width: 1080px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 h1, h2, h3 { text-wrap: balance; margin: 0; }
 a { color: inherit; }
 :focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; border-radius: 6px; }
 
-/* header */
-.top { padding-block: 22px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.top { padding-block: 20px 16px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .mark { display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
-.word { font-family: var(--f-brand); font-weight: 600; font-size: 34px; letter-spacing: .04em; line-height: 1; }
+.word { font-family: var(--f-brand); font-weight: 600; font-size: 32px; letter-spacing: .04em; line-height: 1; }
 .word span:nth-child(1) { color: var(--pink); } .word span:nth-child(2) { color: var(--orange); }
 .word span:nth-child(3) { color: var(--teal); } .word span:nth-child(4), .word span:nth-child(5) { color: var(--purple); }
 .word span:nth-child(6), .word span:nth-child(7) { color: var(--ink); }
 .tag { font-size: 10.5px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); }
-.top nav { display: flex; gap: 18px; font-size: 14px; font-weight: 500; }
+.top nav { display: flex; gap: 18px; font-size: 14px; font-weight: 500; flex-wrap: wrap; }
 .top nav a { text-decoration: none; color: var(--muted); }
 .top nav a:hover { color: var(--ink); }
 .strip { height: 5px; background: linear-gradient(90deg, var(--pink) 0 20%, var(--orange) 20% 40%, var(--teal) 40% 60%, var(--purple) 60% 80%, var(--ink) 80% 100%); }
 
-.intro { padding-block: 40px 28px; display: grid; gap: 10px; max-width: 640px; }
+.intro { padding-block: 36px 24px; display: grid; gap: 10px; max-width: 660px; }
 .eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
 .intro h1 { font-family: var(--f-display); font-size: clamp(30px, 5vw, 44px); line-height: 1.15; }
 .intro p { margin: 0; color: var(--muted); max-width: 60ch; }
-.rule { display: flex; align-items: center; gap: 0; width: 140px; margin-top: 6px; }
+.rule { display: flex; align-items: center; width: 140px; margin-top: 6px; }
 .rule::before, .rule::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex: none; }
 .rule i { flex: 1; height: 1px; background: var(--gold); }
 
-/* events */
-.section-title { font-family: var(--f-display); font-size: 26px; margin-bottom: 16px; }
-.events { display: grid; gap: 20px; padding-bottom: 48px; }
-.ev { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); border-radius: 22px; overflow: hidden; }
-.ev.live { background: var(--night); color: var(--night-ink); }
-.ev .poster { display: block; width: 100%; height: auto; max-width: 100%; }
-.ev.live { align-items: start; }
+section.block { padding-bottom: 52px; }
+.section-title { font-family: var(--f-display); font-size: 28px; margin-bottom: 6px; }
+.section-sub { margin: 0 0 18px; color: var(--muted); max-width: 62ch; }
+
+/* live event */
+.ev { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); border-radius: 22px; overflow: hidden; background: var(--night); color: var(--night-ink); align-items: start; }
+.ev .poster { display: block; width: 100%; height: auto; }
 .ev .body { padding: 28px clamp(18px, 3.5vw, 36px); display: flex; flex-direction: column; gap: 16px; min-width: 0; }
-.status { align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 5px 12px; border-radius: 99px; }
-.live .status { background: var(--orange); color: #1B1335; }
+.status { align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 5px 12px; border-radius: 99px; background: var(--orange); color: #1B1335; }
 .ev h3 { font-family: var(--f-brand); font-weight: 700; font-size: clamp(28px, 4vw, 38px); line-height: 1.05; }
-.live h3 em { font-style: normal; color: var(--orange); }
+.ev h3 em { font-style: normal; color: var(--orange); }
 .ev .lede { margin: 0; color: var(--night-muted); max-width: 52ch; }
 .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 20px; margin: 0; }
 .facts div { display: grid; gap: 1px; padding-top: 10px; border-top: 1px solid rgba(247, 238, 221, .18); }
@@ -84,41 +81,51 @@ a { color: inherit; }
 .acts li { font-size: 13.5px; padding: 6px 12px; border-radius: 99px; border: 1px solid rgba(247, 238, 221, .3); }
 .award { font-size: 14px; color: var(--night-muted); margin: 0; }
 .award b { color: #FFD166; }
-.cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: auto; }
-.btn { appearance: none; border: 0; cursor: pointer; font: 600 15px/1 var(--f-body); padding: 14px 22px; border-radius: 99px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.note { font-size: 13px; color: var(--night-muted); }
+
+/* coming soon grid */
+.soon-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 16px; }
+.soon { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; display: flex; flex-direction: column; }
+.art { aspect-ratio: 16 / 10; max-width: 100%; position: relative; display: grid; place-items: center; overflow: hidden; }
+.art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.art svg { width: 100%; height: 100%; display: block; }
+.art .badge { position: absolute; left: 12px; top: 12px; font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 4px 10px; border-radius: 99px; background: rgba(255, 249, 239, .92); color: #1D2240; }
+.soon .txt { padding: 16px 18px 18px; display: grid; gap: 6px; flex: 1; align-content: start; }
+.soon .kicker { font-size: 11.5px; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+.soon h3 { font-family: var(--f-brand); font-weight: 600; font-size: 21px; line-height: 1.2; }
+.soon p { margin: 0; color: var(--muted); font-size: 14px; }
+.soon .when { font-weight: 600; color: var(--ink); font-size: 13.5px; }
+.soon .btn { margin-top: 8px; justify-self: start; }
+
+/* buttons + forms */
+.btn { appearance: none; border: 0; cursor: pointer; font: 600 15px/1 var(--f-body); padding: 14px 22px; border-radius: 99px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
+.btn-sm { font-size: 13.5px; padding: 10px 16px; }
 .btn-orange { background: var(--orange); color: #1B1335; }
-.btn-orange:hover { filter: brightness(1.06); }
 .btn-ink { background: var(--ink); color: var(--bg); }
 .btn-wa { background: #1FA855; color: #fff; }
 .btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
-.note { font-size: 13px; color: var(--night-muted); }
+.btn[disabled] { opacity: .55; cursor: progress; }
+.btn:hover:not([disabled]) { filter: brightness(1.06); }
 
-.ev.soon { background: var(--surface); border: 1px solid var(--line); grid-template-columns: minmax(0, 1fr); }
-.soon .body { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 28px; }
-.soon .status { background: color-mix(in srgb, var(--gold) 18%, transparent); color: var(--gold); }
-.soon .txt { display: grid; gap: 8px; min-width: 0; flex: 1 1 320px; justify-items: start; }
-.soon h3 { font-family: var(--f-display); font-weight: 700; font-size: 26px; }
-.soon p { margin: 0; color: var(--muted); }
-.diya { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 4px color-mix(in srgb, var(--orange) 25%, transparent); margin-right: 8px; vertical-align: 2px; }
-
-/* booking */
-.book { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.book .wrap { padding-block: 48px; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .9fr); gap: 40px; }
+.book { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); margin-bottom: 52px; }
+.book > .wrap { padding-block: 48px; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .9fr); gap: 40px; }
 .book h2 { font-family: var(--f-display); font-size: 30px; }
 .book .sub { color: var(--muted); margin: 6px 0 22px; }
-form { display: grid; gap: 18px; }
+form { display: grid; gap: 16px; }
 .row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
 label { display: grid; gap: 6px; font-size: 13.5px; font-weight: 500; }
 label small { font-weight: 400; color: var(--muted); }
 input, select, textarea { font: 400 15px/1.4 var(--f-body); color: var(--ink); background: var(--field); border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px; width: 100%; min-width: 0; }
 input:focus, select:focus, textarea:focus { border-color: var(--teal); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 22%, transparent); }
 input[aria-invalid="true"] { border-color: var(--error); }
-.err { color: var(--error); font-size: 12.5px; min-height: 0; }
+.err { color: var(--error); font-size: 12.5px; }
+.msg { font-size: 14px; margin: 0; }
+.msg.err { color: var(--error); } .msg.ok { color: var(--ok); }
 fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 12px; }
 legend { font-size: 13.5px; font-weight: 500; padding: 0; margin-bottom: 10px; }
 .child { display: grid; grid-template-columns: minmax(0, 1fr) 96px auto; gap: 10px; align-items: end; }
 .child .rm { background: transparent; border: 1.5px solid var(--line); color: var(--muted); border-radius: 12px; height: 47px; width: 47px; cursor: pointer; font-size: 20px; line-height: 1; }
-.child .rm[hidden] { display: none !important; }
 .add { justify-self: start; background: transparent; border: 0; color: var(--teal); font: 600 14px var(--f-body); cursor: pointer; padding: 4px 0; }
 .total { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 18px; border-radius: 14px; background: color-mix(in srgb, var(--gold) 12%, var(--surface)); }
 .total b { font-family: var(--f-brand); font-size: 26px; font-variant-numeric: tabular-nums; }
@@ -131,13 +138,11 @@ legend { font-size: 13.5px; font-weight: 500; padding: 0; margin-bottom: 10px; }
 .steps b { display: block; }
 .steps p { margin: 0; color: var(--muted); font-size: 14px; }
 .venue { padding: 18px; border-radius: 14px; border: 1px solid var(--line); display: grid; gap: 4px; }
-.venue .eyebrow { font-size: 11px; }
 
 .done { border: 1.5px solid var(--ok); border-radius: 18px; padding: 22px; display: grid; gap: 14px; }
 .done h3 { font-family: var(--f-display); font-size: 24px; }
 .done pre { white-space: pre-wrap; font: 13.5px/1.55 var(--f-body); background: var(--bg); border-radius: 12px; padding: 14px; margin: 0; border: 1px solid var(--line); overflow-x: auto; }
-.done .actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.warn { font-size: 13.5px; color: var(--error); margin: 0; }
+.actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .pstep { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
 .pnum { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-family: var(--f-brand); font-weight: 600; background: var(--ink); color: var(--bg); }
 .pbody { display: grid; gap: 10px; min-width: 0; }
@@ -150,6 +155,39 @@ legend { font-size: 13.5px; font-weight: 500; padding: 0; margin-bottom: 10px; }
 .upi-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
 .upi-row code { font: 600 14px/1.3 var(--f-body); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; word-break: break-all; user-select: all; }
 
+.passes { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr)); gap: 14px; }
+.passes img { width: 100%; height: auto; border-radius: 12px; border: 1px solid var(--line); display: block; }
+.find { margin-top: 28px; padding-top: 22px; border-top: 1px dashed var(--line); display: grid; gap: 12px; }
+.find h3 { font-family: var(--f-display); font-size: 20px; }
+
+/* past workshops */
+.past { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); gap: 16px; }
+.past article { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; overflow: hidden; }
+.past .art { aspect-ratio: 4 / 3; }
+.past .txt { padding: 14px 16px 16px; display: grid; gap: 2px; }
+.past h3 { font-family: var(--f-brand); font-weight: 600; font-size: 19px; }
+.past p { margin: 0; color: var(--muted); font-size: 13.5px; }
+.thumbs { display: flex; gap: 6px; padding: 0 16px 16px; }
+.thumbs button { border: 2px solid transparent; padding: 0; border-radius: 8px; overflow: hidden; width: 54px; height: 40px; cursor: pointer; background: none; }
+.thumbs button[aria-pressed="true"] { border-color: var(--gold); }
+.thumbs img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ph-note { position: absolute; bottom: 10px; right: 12px; font-size: 11.5px; color: rgba(255, 255, 255, .9); background: rgba(0, 0, 0, .25); padding: 3px 8px; border-radius: 99px; }
+
+/* private parties */
+.parties { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 28px; align-items: start; }
+.party-cards { display: grid; gap: 14px; }
+.party { border-radius: 18px; padding: 20px; display: grid; gap: 6px; color: #FFF9EF; }
+.party.birthday { background: linear-gradient(135deg, #E0306A, #F08C00); }
+.party.kitty { background: linear-gradient(135deg, #6A3FA0, #009CA6); }
+.party h3 { font-family: var(--f-brand); font-weight: 600; font-size: 22px; }
+.party p { margin: 0; font-size: 14px; opacity: .95; }
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+
+/* notify sheet */
+.sheet { position: fixed; inset: 0; background: var(--sheet-bg); display: grid; place-items: center; z-index: 20; padding: 16px; }
+.sheet-card { background: var(--surface); border-radius: 20px; width: min(460px, 100%); max-height: 100%; overflow: auto; padding: 22px; display: grid; gap: 14px; }
+.sheet-card h3 { font-family: var(--f-display); font-size: 22px; }
+
 footer { background: var(--navy); color: #F7EEDD; }
 footer .wrap { padding-block: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; font-size: 14px; }
 footer .word { font-size: 24px; }
@@ -157,25 +195,25 @@ footer .word span:nth-child(6), footer .word span:nth-child(7) { color: #F7EEDD;
 footer p { margin: 0; color: #C9C3D6; }
 footer .gold { color: #E3C27F; }
 
-@media (max-width: 760px) {
-  .ev { grid-template-columns: minmax(0, 1fr); }
-  .book .wrap { grid-template-columns: minmax(0, 1fr); }
-  .top nav { display: none; }
+@media (max-width: 820px) {
+  .ev, .book > .wrap, .parties { grid-template-columns: minmax(0, 1fr); }
+  .top nav { gap: 12px; font-size: 13px; }
 }
 @media (max-width: 460px) {
   .row, .facts, .paybox { grid-template-columns: minmax(0, 1fr); }
   .paybox img { max-width: 260px; }
   .child { grid-template-columns: minmax(0, 1fr) 80px auto; }
 }
-@media (prefers-reduced-motion: no-preference) { .btn { transition: filter .15s, transform .15s; } .btn:active { transform: scale(.98); } }
 </style>
+</head>
+<body>
 
 <header class="wrap top">
   <a class="mark" href="#top" aria-label="MONACHI home">
     <span class="word" aria-hidden="true"><span>M</span><span>O</span><span>N</span><span>A</span><span>C</span><span>H</span><span>I</span></span>
     <span class="tag">Crafting Celebrations</span>
   </a>
-  <nav aria-label="Sections"><a href="#events">Events</a><a href="#book">Book a seat</a><a href="https://www.instagram.com/monachi.crafts/" target="_blank" rel="noopener">Instagram</a></nav>
+  <nav aria-label="Sections"><a href="#events">Events</a><a href="#book">Book</a><a href="#workshops">Workshops</a><a href="#parties">Private parties</a><a href="#mypass">My pass</a></nav>
 </header>
 <div class="strip" id="top"></div>
 
@@ -183,103 +221,173 @@ footer .gold { color: #E3C27F; }
   <section class="wrap intro">
     <span class="eyebrow">MONACHI Events</span>
     <h1>Celebrations made by hand, for every age.</h1>
-    <p>Themed parties, craft afternoons and festival celebrations for children and families. Pick an event, book your child's place, and we'll confirm on WhatsApp.</p>
+    <p>Themed parties, craft workshops and festival celebrations for children and families. Book online, pay securely and get your Party Pass straight away.</p>
     <div class="rule" aria-hidden="true"><i></i></div>
   </section>
 
-  <section class="wrap" id="events" aria-labelledby="events-h">
-    <h2 class="section-title" id="events-h">Upcoming events</h2>
-    <div class="events" id="event-list"></div>
+  <section class="wrap block" id="events" aria-labelledby="events-h">
+    <h2 class="section-title" id="events-h">Booking now</h2>
+    <div id="live-list" style="display:grid;gap:20px"></div>
+  </section>
+
+  <section class="wrap block" id="upcoming" aria-labelledby="up-h">
+    <h2 class="section-title" id="up-h">Coming soon</h2>
+    <p class="section-sub">Details and booking open soon. Tap "Notify me" and we'll tell you the moment booking opens.</p>
+    <div class="soon-grid" id="soon-list"></div>
   </section>
 
   <section class="book" id="book" aria-labelledby="book-h">
     <div class="wrap">
       <div>
         <h2 id="book-h">Book a place</h2>
-        <p class="sub">Pre-booking is a must. Fill this in and send it to us on WhatsApp in one tap.</p>
+        <p class="sub" id="book-sub">Pre-booking is a must.</p>
 
         <form id="form" novalidate>
-          <label for="event">Event
-            <select id="event" name="event"></select>
-          </label>
+          <label for="event">Event<select id="event" name="event"></select></label>
           <div class="row">
             <label for="parent">Parent's name
               <input id="parent" name="parent" autocomplete="name" placeholder="e.g. Neha Sharma">
               <span class="err" id="parent-err"></span>
             </label>
-            <label for="phone">Parent's WhatsApp number
+            <label for="phone">WhatsApp number
               <input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="10-digit mobile number">
               <span class="err" id="phone-err"></span>
             </label>
           </div>
+          <label for="email">Email <small id="email-hint">(your Party Pass is emailed here)</small>
+            <input id="email" name="email" type="email" inputmode="email" autocomplete="email" placeholder="name@example.com">
+            <span class="err" id="email-err"></span>
+          </label>
           <fieldset>
             <legend id="kids-legend">Children attending</legend>
-            <div id="kids"></div>
+            <div id="kids" style="display:grid;gap:10px"></div>
             <span class="err" id="kids-err"></span>
             <button type="button" class="add" id="add-kid">+ Add another child</button>
           </fieldset>
-          <label for="notes">Anything we should know? <small>(optional: allergies, costume plans, siblings)</small>
-            <textarea id="notes" name="notes" rows="3"></textarea>
+          <label for="notes">Anything we should know? <small>(optional: allergies, siblings)</small>
+            <textarea id="notes" name="notes" rows="2"></textarea>
           </label>
           <div class="total" aria-live="polite"><span id="total-label">1 child × ₹250</span><b id="total">₹250</b></div>
-          <button class="btn btn-ink" type="submit" style="justify-self:start">Review booking</button>
+          <button class="btn btn-ink" type="submit" id="submit-btn" style="justify-self:start">Continue to payment</button>
+          <p class="msg" id="form-msg" aria-live="polite"></p>
         </form>
 
-        <div class="done" id="done" hidden>
+        <!-- Online mode: shown after a successful payment -->
+        <div class="done" id="paid" hidden>
+          <h3>You're booked! Here's your Party Pass</h3>
+          <p class="pnote" id="paid-note"></p>
+          <div class="passes" id="passes"></div>
+          <div class="actions">
+            <button class="btn btn-ink" type="button" id="dl-pdf">Download pass (PDF)</button>
+            <button class="btn btn-wa" type="button" id="share-wa">Share on WhatsApp</button>
+            <button class="btn btn-ghost" type="button" id="book-another">Book another</button>
+          </div>
+          <p class="small" id="share-msg"></p>
+        </div>
+
+        <!-- Manual mode (no backend yet): WhatsApp + UPI -->
+        <div class="done" id="manual" hidden>
           <h3>Three quick steps to confirm your place</h3>
-          <div class="pstep">
-            <span class="pnum">1</span>
-            <div class="pbody">
-              <b>Send your booking on WhatsApp</b>
-              <pre id="summary"></pre>
-              <p class="warn" id="no-number" hidden>WhatsApp booking opens shortly. Please copy these details and keep them handy.</p>
-              <div class="actions">
-                <a class="btn btn-wa" id="wa" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
-                <button class="btn btn-ghost" type="button" id="copy">Copy details</button>
-                <button class="btn btn-ghost" type="button" id="edit">Edit</button>
+          <div class="pstep"><span class="pnum">1</span><div class="pbody">
+            <b>Send your booking on WhatsApp</b>
+            <pre id="summary"></pre>
+            <div class="actions">
+              <a class="btn btn-wa" id="wa" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+              <button class="btn btn-ghost" type="button" id="copy">Copy details</button>
+              <button class="btn btn-ghost" type="button" id="edit">Edit</button>
+            </div>
+          </div></div>
+          <div class="pstep"><span class="pnum">2</span><div class="pbody">
+            <b>Pay <span id="pay-amt">₹250</span> by UPI</b>
+            <p class="pnote">Use Google Pay, PhonePe, Paytm or any UPI app. Please add your booking code <b id="pay-code"></b> in the payment note.</p>
+            <div class="paybox">
+              <img src="assets/gpay-qr.png" alt="Google Pay QR code" width="460" height="519">
+              <div class="paydetails">
+                <a class="btn btn-ink btn-sm" id="upi-link" href="#">Pay in a UPI app</a>
+                <span class="small">Opens your UPI app on a phone with the amount filled in. If nothing opens, scan the QR code or pay to the UPI ID below.</span>
+                <div class="upi-row"><code id="upi-id"></code><button class="btn btn-ghost btn-sm" type="button" id="copy-upi">Copy UPI ID</button></div>
+                <span class="small">The payee name shows as <b id="upi-name"></b>, the MONACHI organiser.</span>
               </div>
             </div>
-          </div>
-          <div class="pstep">
-            <span class="pnum">2</span>
-            <div class="pbody">
-              <b>Pay <span id="pay-amt">₹250</span> by UPI</b>
-              <p class="pnote">Use Google Pay, PhonePe, Paytm or any UPI app. Please add your booking code <b id="pay-code"></b> in the payment note.</p>
-              <div class="paybox">
-                <img src="assets/gpay-qr.png" alt="Google Pay QR code for UPI ID monikagupta17681@okaxis" width="460" height="519">
-                <div class="paydetails">
-                  <a class="btn btn-ink" id="upi-link" href="#">Pay ₹250 in a UPI app</a>
-                  <span class="small">Opens your UPI app on a phone with the amount filled in. If nothing opens, scan the QR code or pay to the UPI ID below.</span>
-                  <div class="upi-row"><code id="upi-id"></code><button class="btn btn-ghost" type="button" id="copy-upi">Copy UPI ID</button></div>
-                  <span class="small">On the same phone? Take a screenshot of the QR code and use "scan from gallery" in your UPI app.</span>
-                  <span class="small">The payee name shows as <b>Monika Gupta</b>, the MONACHI organiser.</span>
-                </div>
-              </div>
+          </div></div>
+          <div class="pstep"><span class="pnum">3</span><div class="pbody">
+            <b>Send the payment screenshot</b>
+            <p class="pnote">Share it in the same WhatsApp chat. Once we confirm the payment, each child's Party Pass arrives on WhatsApp.</p>
+            <div class="actions"><a class="btn btn-wa" id="wa-paid" href="#" target="_blank" rel="noopener">Tell us you've paid</a></div>
+          </div></div>
+        </div>
+
+        <div class="find" id="mypass">
+          <h3>Already booked? Get your pass again</h3>
+          <form id="find-form" novalidate>
+            <div class="row">
+              <label for="f-code">Booking code<input id="f-code" autocomplete="off" placeholder="MON-HW-XXXXXX"></label>
+              <label for="f-phone">WhatsApp number<input id="f-phone" inputmode="tel" autocomplete="tel" placeholder="10 digits"></label>
             </div>
-          </div>
-          <div class="pstep">
-            <span class="pnum">3</span>
-            <div class="pbody">
-              <b>Send the payment screenshot</b>
-              <p class="pnote">Share it in the same WhatsApp chat. Once we confirm the payment, each child's Party Pass arrives on WhatsApp. Show it at the entry.</p>
-              <div class="actions"><a class="btn btn-wa" id="wa-paid" href="#" target="_blank" rel="noopener">Tell us you've paid</a></div>
-            </div>
-          </div>
+            <button class="btn btn-ghost btn-sm" type="submit" style="justify-self:start">Show my pass</button>
+            <p class="msg" id="find-msg" aria-live="polite"></p>
+          </form>
         </div>
       </div>
 
       <aside class="side" aria-label="How booking works">
-        <ol class="steps">
-          <li><div><b>Fill in the form</b><p>Your name, number and each child's name and age.</p></div></li>
-          <li><div><b>Send it on WhatsApp</b><p>Your details arrive as a ready-made message with a booking code.</p></div></li>
-          <li><div><b>Pay by UPI</b><p>Scan the Google Pay QR code shown after you book, then send us the screenshot.</p></div></li>
-          <li><div><b>Get your Party Pass</b><p>Once payment is confirmed, each child gets a personal Party Pass on WhatsApp. Show it at the entry.</p></div></li>
-        </ol>
+        <ol class="steps" id="how-steps"></ol>
         <div class="venue" id="venue-box"></div>
       </aside>
     </div>
   </section>
+
+  <section class="wrap block" id="workshops" aria-labelledby="ws-h">
+    <h2 class="section-title" id="ws-h">Our past workshops</h2>
+    <p class="section-sub">A look at what little hands have made with us.</p>
+    <div class="past" id="past-list"></div>
+  </section>
+
+  <section class="wrap block" id="parties" aria-labelledby="pt-h">
+    <h2 class="section-title" id="pt-h">Private parties</h2>
+    <p class="section-sub">Planning a birthday or a kitty party? Tell us about it and we'll plan a DIY celebration around your group.</p>
+    <div class="parties">
+      <div class="party-cards" id="party-cards"></div>
+      <div class="panel">
+        <form id="enq-form" novalidate>
+          <label for="q-type">I'm interested in<select id="q-type"></select></label>
+          <div class="row">
+            <label for="q-name">Your name<input id="q-name" autocomplete="name"></label>
+            <label for="q-phone">WhatsApp number<input id="q-phone" inputmode="tel" autocomplete="tel" placeholder="10 digits"></label>
+          </div>
+          <div class="row">
+            <label for="q-email">Email <small>(optional)</small><input id="q-email" type="email" autocomplete="email"></label>
+            <label for="q-date">Preferred date <small>(optional)</small><input id="q-date" type="date"></label>
+          </div>
+          <div class="row">
+            <label for="q-guests">Number of guests<input id="q-guests" inputmode="numeric" placeholder="e.g. 15"></label>
+            <label for="q-age">Age group<select id="q-age"><option>Kids</option><option>Teens</option><option>Adults</option><option>Mixed</option></select></label>
+          </div>
+          <label for="q-notes">Tell us more <small>(optional)</small><textarea id="q-notes" rows="3" placeholder="Venue, theme, budget…"></textarea></label>
+          <button class="btn btn-ink" type="submit" style="justify-self:start">Send enquiry</button>
+          <p class="msg" id="enq-msg" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+  </section>
 </main>
+
+<div class="sheet" id="notify" hidden role="dialog" aria-modal="true" aria-labelledby="n-h">
+  <div class="sheet-card">
+    <h3 id="n-h">Notify me</h3>
+    <p class="pnote" id="n-sub"></p>
+    <form id="n-form" novalidate>
+      <label for="n-name">Your name<input id="n-name" autocomplete="name"></label>
+      <label for="n-phone">WhatsApp number<input id="n-phone" inputmode="tel" autocomplete="tel" placeholder="10 digits"></label>
+      <label for="n-email">Email <small>(optional)</small><input id="n-email" type="email" autocomplete="email"></label>
+      <div class="actions">
+        <button class="btn btn-ink btn-sm" type="submit">Notify me</button>
+        <button class="btn btn-ghost btn-sm" type="button" id="n-close">Close</button>
+      </div>
+      <p class="msg" id="n-msg" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
 
 <footer>
   <div class="wrap">
@@ -289,192 +397,16 @@ footer .gold { color: #E3C27F; }
     </div>
     <div style="display:grid;gap:4px">
       <p>WhatsApp: <span id="contact-num" class="gold"></span></p>
-      <p>Instagram: <a class="gold" href="https://www.instagram.com/monachi.crafts/" target="_blank" rel="noopener">@monachi.crafts</a></p>
+      <p>Instagram: <a class="gold" id="insta" href="#" target="_blank" rel="noopener"></a></p>
       <p>Celebrations for kids, families and ladies' parties</p>
     </div>
   </div>
 </footer>
 
-<script>
-// Bookings go to this WhatsApp number (country code + number, digits only), e.g. "919876543210".
-const WHATSAPP = "917217054807";
-const UPI_ID = "monikagupta17681@okaxis", UPI_NAME = "Monika Gupta";
-
-// Add future events here. status: "open" (bookable) or "soon" (coming soon card).
-const EVENTS = [
-  {
-    id: "halloween-2026", code: "HW", status: "open",
-    title: "Halloween Party", titleHtml: "Halloween <em>Party</em>",
-    lede: "Spooky fun awaits! An evening of games, crafts and costumes for little monsters.",
-    date: "Saturday, 31 October 2026", time: "5:00 PM – 7:00 PM",
-    ages: "4 – 14 years", minAge: 4, maxAge: 14, fee: 250,
-    venue: "Sunbeam Pre School premises",
-    activities: ["Fun Halloween games", "Snacks", "Craft activities", "Tattoo making"],
-    award: "Best Costume Award: the winner gets a special prize.",
-    poster: "assets/halloween-poster.jpg"
-  },
-  {
-    id: "diwali-2026", code: "DW", status: "soon",
-    title: "Diwali Celebration",
-    lede: "Diya painting, rangoli and festive crafts. Date and details are coming soon."
-  }
-];
-
-const $ = (s) => document.querySelector(s);
-const rupee = (n) => "₹" + n.toLocaleString("en-IN");
-const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const waLink = (text) => "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text);
-const open = EVENTS.filter((e) => e.status === "open");
-
-function renderEvents() {
-  $("#event-list").innerHTML = EVENTS.map((e) => e.status === "open" ? `
-    <article class="ev live" id="${e.id}">
-      <img class="poster" src="${e.poster}" alt="${esc(e.title)} poster">
-      <div class="body">
-        <span class="status">Booking open</span>
-        <h3>${e.titleHtml}</h3>
-        <p class="lede">${esc(e.lede)}</p>
-        <dl class="facts">
-          <div><dt>Date</dt><dd>${esc(e.date)}</dd></div>
-          <div><dt>Time</dt><dd>${esc(e.time)}</dd></div>
-          <div><dt>Ages</dt><dd>${esc(e.ages)}</dd></div>
-          <div><dt>Entry</dt><dd>${rupee(e.fee)} per child</dd></div>
-          <div style="grid-column:1/-1"><dt>Venue</dt><dd>${esc(e.venue)}</dd></div>
-        </dl>
-        <ul class="acts">${e.activities.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>
-        <p class="award"><b>★</b> ${esc(e.award)}</p>
-        <div class="cta-row">
-          <a class="btn btn-orange" href="#book" data-book="${e.id}">Book now</a>
-          <span class="note">Pre-booking is a must</span>
-        </div>
-      </div>
-    </article>` : `
-    <article class="ev soon" id="${e.id}">
-      <div class="body">
-        <div class="txt">
-          <span class="status">Coming soon</span>
-          <h3><span class="diya" aria-hidden="true"></span>${esc(e.title)}</h3>
-          <p>${esc(e.lede)}</p>
-        </div>
-        ${WHATSAPP ? `<a class="btn btn-ghost" target="_blank" rel="noopener" href="${waLink("Hi MONACHI, please tell me when booking opens for the " + e.title + ".")}">Tell me when booking opens</a>` : ""}
-      </div>
-    </article>`).join("");
-}
-
-function kidRow(i) {
-  const d = document.createElement("div");
-  d.className = "child";
-  d.innerHTML = `
-    <label for="kid-name-${i}">Child's name<input id="kid-name-${i}" data-k="name" autocomplete="off"></label>
-    <label for="kid-age-${i}">Age<input id="kid-age-${i}" data-k="age" inputmode="numeric" maxlength="2"></label>
-    <button type="button" class="rm" aria-label="Remove child">×</button>`;
-  d.querySelector(".rm").addEventListener("click", () => { d.remove(); syncKids(); });
-  return d;
-}
-let kidSeq = 0;
-function addKid() { if ($("#kids").children.length >= 6) return; $("#kids").appendChild(kidRow(kidSeq++)); syncKids(); }
-function syncKids() {
-  const rows = [...$("#kids").children];
-  rows.forEach((r) => (r.querySelector(".rm").hidden = rows.length === 1));
-  $("#add-kid").hidden = rows.length >= 6;
-  updateTotal();
-}
-function currentEvent() { return EVENTS.find((e) => e.id === $("#event").value) || open[0]; }
-function updateTotal() {
-  const ev = currentEvent(), n = $("#kids").children.length;
-  $("#total-label").textContent = `${n} ${n === 1 ? "child" : "children"} × ${rupee(ev.fee)}`;
-  $("#total").textContent = rupee(n * ev.fee);
-  $("#kids-legend").textContent = `Children attending (ages ${ev.ages})`;
-  $("#venue-box").innerHTML = `<span class="eyebrow">Venue</span><b>${esc(ev.venue)}</b><span style="color:var(--muted);font-size:14px">${esc(ev.date)} · ${esc(ev.time)}</span>`;
-}
-
-function setErr(id, msg) { $("#" + id + "-err").textContent = msg; $("#" + id).setAttribute("aria-invalid", msg ? "true" : "false"); }
-function validate() {
-  const ev = currentEvent();
-  let ok = true;
-  const parent = $("#parent").value.trim();
-  setErr("parent", parent.length < 2 ? "Please enter your name." : ""); if (parent.length < 2) ok = false;
-  let phone = $("#phone").value.replace(/\D/g, "");
-  if (phone.length === 12 && phone.startsWith("91")) phone = phone.slice(2);
-  if (phone.length === 11 && phone.startsWith("0")) phone = phone.slice(1);
-  const phoneOk = /^[6-9]\d{9}$/.test(phone);
-  setErr("phone", phoneOk ? "" : "Enter a 10-digit Indian mobile number."); if (!phoneOk) ok = false;
-  const kids = [...$("#kids").children].map((r) => {
-    const n = r.querySelector('[data-k="name"]'), a = r.querySelector('[data-k="age"]');
-    const age = parseInt(a.value, 10), nameOk = n.value.trim().length > 0, ageOk = age >= ev.minAge && age <= ev.maxAge;
-    n.setAttribute("aria-invalid", nameOk ? "false" : "true"); a.setAttribute("aria-invalid", ageOk ? "false" : "true");
-    if (!nameOk || !ageOk) ok = false;
-    return { name: n.value.trim(), age };
-  });
-  const kidsBad = [...$("#kids").querySelectorAll("input")].some((i) => i.getAttribute("aria-invalid") === "true");
-  $("#kids-err").textContent = kidsBad ? `Add each child's name and an age from ${ev.minAge} to ${ev.maxAge}.` : "";
-  if (!ok) { const bad = document.querySelector('[aria-invalid="true"]'); if (bad) bad.focus(); }
-  return ok ? { ev, parent, phone, kids, notes: $("#notes").value.trim() } : null;
-}
-
-function bookingCode(ev) {
-  const a = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
-  let s = ""; for (let i = 0; i < 4; i++) s += a[Math.floor(Math.random() * a.length)];
-  return `MON-${ev.code}-${s}`;
-}
-
-$("#form").addEventListener("submit", (e) => {
-  e.preventDefault();
-  const b = validate(); if (!b) return;
-  const code = bookingCode(b.ev);
-  const lines = [
-    `New booking request: ${b.ev.title}`,
-    `Booking code: ${code}`,
-    `${b.ev.date}, ${b.ev.time}`,
-    `Venue: ${b.ev.venue}`,
-    ``,
-    `Parent: ${b.parent}`,
-    `WhatsApp: +91 ${b.phone}`,
-    ...b.kids.map((k, i) => `Child ${i + 1}: ${k.name}, age ${k.age}`),
-    `Total: ${b.kids.length} × ${rupee(b.ev.fee)} = ${rupee(b.kids.length * b.ev.fee)}`,
-  ];
-  if (b.notes) lines.push(`Notes: ${b.notes}`);
-  const text = lines.join("\n");
-  $("#summary").textContent = text;
-  const wa = $("#wa");
-  if (WHATSAPP) { wa.href = waLink(text); wa.hidden = false; $("#no-number").hidden = true; }
-  else { wa.hidden = true; $("#no-number").hidden = false; }
-  const amt = b.kids.length * b.ev.fee;
-  $("#pay-amt").textContent = rupee(amt); $("#pay-code").textContent = code;
-  $("#upi-link").textContent = `Pay ${rupee(amt)} in a UPI app`;
-  $("#upi-link").href = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${amt}&cu=INR&tn=${encodeURIComponent(code)}`;
-  $("#wa-paid").href = waLink(`Hi MONACHI, I have paid ${rupee(amt)} for booking ${code} (${b.ev.title}). Sending the payment screenshot now.`);
-  $("#form").hidden = true; $("#done").hidden = false;
-  $("#done").scrollIntoView({ block: "start", behavior: "smooth" });
-});
-$("#upi-id").textContent = UPI_ID;
-$("#copy-upi").addEventListener("click", (ev) => {
-  const btn = ev.currentTarget, done = (t) => { btn.textContent = t; setTimeout(() => (btn.textContent = "Copy UPI ID"), 1800); };
-  const sel = () => { const r = document.createRange(); r.selectNodeContents($("#upi-id")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); done("Selected, press copy"); };
-  try { navigator.clipboard.writeText(UPI_ID).then(() => done("Copied"), sel); } catch (_) { sel(); }
-});
-$("#edit").addEventListener("click", () => { $("#done").hidden = true; $("#form").hidden = false; });
-$("#copy").addEventListener("click", (ev) => {
-  const btn = ev.currentTarget, text = $("#summary").textContent;
-  const flash = (t) => { btn.textContent = t; setTimeout(() => (btn.textContent = "Copy details"), 1800); };
-  try {
-    navigator.clipboard.writeText(text).then(() => flash("Copied"), () => selectSummary(flash));
-  } catch (_) { selectSummary(flash); }
-});
-function selectSummary(flash) { const r = document.createRange(); r.selectNodeContents($("#summary")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); flash("Selected, press copy"); }
-
-// init
-$("#event").innerHTML = open.map((e) => `<option value="${e.id}">${esc(e.title)} · ${esc(e.date)}</option>`).join("");
-$("#event").addEventListener("change", updateTotal);
-$("#add-kid").addEventListener("click", addKid);
-$("#contact-num").textContent = WHATSAPP ? "+91 " + WHATSAPP.slice(2, 7) + " " + WHATSAPP.slice(7) : "number coming soon";
-renderEvents();
-document.addEventListener("click", (e) => { const t = e.target.closest("[data-book]"); if (t) $("#event").value = t.dataset.book, updateTotal(); });
-addKid();
-const h = location.hash.slice(1);
-if (open.some((e) => e.id === h)) $("#event").value = h;
-updateTotal();
-</script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="config.js"></script>
+<script src="pass.js"></script>
+<script src="app.js"></script>
 </body>
 </html>
