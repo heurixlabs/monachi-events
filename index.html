@@ -1,0 +1,480 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="MONACHI Events: book kids' Halloween Party, Diwali, Christmas and New Year celebrations. Crafting Celebrations.">
+<meta property="og:title" content="MONACHI Events · Halloween Party booking open">
+<meta property="og:description" content="Sat 31 Oct, 5–7 PM · Ages 4–14 · ₹250 per child · Sunbeam Pre School premises">
+<meta property="og:image" content="assets/og-image.jpg">
+<meta name="theme-color" content="#1B1335">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}</style>
+<title>MONACHI Events</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600&display=swap">
+</head>
+<body>
+<style>
+/* Layout: ivory events hub. Wordmark header with the logo's colour strip, event cards, then one booking form that hands off to WhatsApp. */
+:root {
+  --bg: #FBF6EC; --surface: #FFFFFF; --ink: #1D2240; --muted: #66657A; --line: #E7DDC9; --gold: #B8924A;
+  --pink: #E0306A; --orange: #F08C00; --teal: #009CA6; --purple: #6A3FA0; --navy: #1D2240;
+  --night: #1B1335; --night-ink: #F7EEDD; --night-muted: #C8BEDC; --field: #FFFFFF; --error: #C0263F; --ok: #157F5B;
+  --f-display: "Playfair Display", Georgia, "Times New Roman", serif;
+  --f-brand: "Fredoka", "Poppins", system-ui, sans-serif;
+  --f-body: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #15121E; --surface: #1F1A2C; --ink: #F3ECDF; --muted: #ABA4BA; --line: #362E49; --gold: #D6B675;
+  --navy: #0E0B18; --night: #110C22; --night-ink: #F7EEDD; --night-muted: #C8BEDC; --field: #191524; --error: #FF7A8E; --ok: #5BD1A4;
+  --pink: #F0508A; --orange: #FFA22E; --teal: #2BC1C9; --purple: #A27BE0; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #15121E; --surface: #1F1A2C; --ink: #F3ECDF; --muted: #ABA4BA; --line: #362E49; --gold: #D6B675;
+  --navy: #0E0B18; --night: #110C22; --night-ink: #F7EEDD; --night-muted: #C8BEDC; --field: #191524; --error: #FF7A8E; --ok: #5BD1A4;
+  --pink: #F0508A; --orange: #FFA22E; --teal: #2BC1C9; --purple: #A27BE0; color-scheme: dark }
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--ink); font-family: var(--f-body); font-size: 15px; line-height: 1.6; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { text-wrap: balance; margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; border-radius: 6px; }
+
+/* header */
+.top { padding-block: 22px 18px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.mark { display: flex; flex-direction: column; gap: 2px; text-decoration: none; }
+.word { font-family: var(--f-brand); font-weight: 600; font-size: 34px; letter-spacing: .04em; line-height: 1; }
+.word span:nth-child(1) { color: var(--pink); } .word span:nth-child(2) { color: var(--orange); }
+.word span:nth-child(3) { color: var(--teal); } .word span:nth-child(4), .word span:nth-child(5) { color: var(--purple); }
+.word span:nth-child(6), .word span:nth-child(7) { color: var(--ink); }
+.tag { font-size: 10.5px; font-weight: 600; letter-spacing: .32em; text-transform: uppercase; color: var(--muted); }
+.top nav { display: flex; gap: 18px; font-size: 14px; font-weight: 500; }
+.top nav a { text-decoration: none; color: var(--muted); }
+.top nav a:hover { color: var(--ink); }
+.strip { height: 5px; background: linear-gradient(90deg, var(--pink) 0 20%, var(--orange) 20% 40%, var(--teal) 40% 60%, var(--purple) 60% 80%, var(--ink) 80% 100%); }
+
+.intro { padding-block: 40px 28px; display: grid; gap: 10px; max-width: 640px; }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--gold); }
+.intro h1 { font-family: var(--f-display); font-size: clamp(30px, 5vw, 44px); line-height: 1.15; }
+.intro p { margin: 0; color: var(--muted); max-width: 60ch; }
+.rule { display: flex; align-items: center; gap: 0; width: 140px; margin-top: 6px; }
+.rule::before, .rule::after { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex: none; }
+.rule i { flex: 1; height: 1px; background: var(--gold); }
+
+/* events */
+.section-title { font-family: var(--f-display); font-size: 26px; margin-bottom: 16px; }
+.events { display: grid; gap: 20px; padding-bottom: 48px; }
+.ev { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); border-radius: 22px; overflow: hidden; }
+.ev.live { background: var(--night); color: var(--night-ink); }
+.ev .poster { display: block; width: 100%; height: auto; max-width: 100%; }
+.ev.live { align-items: start; }
+.ev .body { padding: 28px clamp(18px, 3.5vw, 36px); display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.status { align-self: flex-start; font-size: 12px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; padding: 5px 12px; border-radius: 99px; }
+.live .status { background: var(--orange); color: #1B1335; }
+.ev h3 { font-family: var(--f-brand); font-weight: 700; font-size: clamp(28px, 4vw, 38px); line-height: 1.05; }
+.live h3 em { font-style: normal; color: var(--orange); }
+.ev .lede { margin: 0; color: var(--night-muted); max-width: 52ch; }
+.facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px 20px; margin: 0; }
+.facts div { display: grid; gap: 1px; padding-top: 10px; border-top: 1px solid rgba(247, 238, 221, .18); }
+.facts dt { font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--night-muted); }
+.facts dd { margin: 0; font-weight: 600; }
+.acts { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; margin: 0; padding: 0; }
+.acts li { font-size: 13.5px; padding: 6px 12px; border-radius: 99px; border: 1px solid rgba(247, 238, 221, .3); }
+.award { font-size: 14px; color: var(--night-muted); margin: 0; }
+.award b { color: #FFD166; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: auto; }
+.btn { appearance: none; border: 0; cursor: pointer; font: 600 15px/1 var(--f-body); padding: 14px 22px; border-radius: 99px; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.btn-orange { background: var(--orange); color: #1B1335; }
+.btn-orange:hover { filter: brightness(1.06); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-wa { background: #1FA855; color: #fff; }
+.btn-ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
+.note { font-size: 13px; color: var(--night-muted); }
+
+.ev.soon { background: var(--surface); border: 1px solid var(--line); grid-template-columns: minmax(0, 1fr); }
+.soon .body { flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 18px 28px; }
+.soon .status { background: color-mix(in srgb, var(--gold) 18%, transparent); color: var(--gold); }
+.soon .txt { display: grid; gap: 8px; min-width: 0; flex: 1 1 320px; justify-items: start; }
+.soon h3 { font-family: var(--f-display); font-weight: 700; font-size: 26px; }
+.soon p { margin: 0; color: var(--muted); }
+.diya { display: inline-block; width: 10px; height: 10px; border-radius: 50%; background: var(--orange); box-shadow: 0 0 0 4px color-mix(in srgb, var(--orange) 25%, transparent); margin-right: 8px; vertical-align: 2px; }
+
+/* booking */
+.book { background: var(--surface); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.book .wrap { padding-block: 48px; display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, .9fr); gap: 40px; }
+.book h2 { font-family: var(--f-display); font-size: 30px; }
+.book .sub { color: var(--muted); margin: 6px 0 22px; }
+form { display: grid; gap: 18px; }
+.row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+label { display: grid; gap: 6px; font-size: 13.5px; font-weight: 500; }
+label small { font-weight: 400; color: var(--muted); }
+input, select, textarea { font: 400 15px/1.4 var(--f-body); color: var(--ink); background: var(--field); border: 1.5px solid var(--line); border-radius: 12px; padding: 12px 14px; width: 100%; min-width: 0; }
+input:focus, select:focus, textarea:focus { border-color: var(--teal); outline: none; box-shadow: 0 0 0 3px color-mix(in srgb, var(--teal) 22%, transparent); }
+input[aria-invalid="true"] { border-color: var(--error); }
+.err { color: var(--error); font-size: 12.5px; min-height: 0; }
+fieldset { border: 0; padding: 0; margin: 0; display: grid; gap: 12px; }
+legend { font-size: 13.5px; font-weight: 500; padding: 0; margin-bottom: 10px; }
+.child { display: grid; grid-template-columns: minmax(0, 1fr) 96px auto; gap: 10px; align-items: end; }
+.child .rm { background: transparent; border: 1.5px solid var(--line); color: var(--muted); border-radius: 12px; height: 47px; width: 47px; cursor: pointer; font-size: 20px; line-height: 1; }
+.child .rm[hidden] { display: none !important; }
+.add { justify-self: start; background: transparent; border: 0; color: var(--teal); font: 600 14px var(--f-body); cursor: pointer; padding: 4px 0; }
+.total { display: flex; justify-content: space-between; align-items: baseline; padding: 16px 18px; border-radius: 14px; background: color-mix(in srgb, var(--gold) 12%, var(--surface)); }
+.total b { font-family: var(--f-brand); font-size: 26px; font-variant-numeric: tabular-nums; }
+.total span { color: var(--muted); font-size: 13.5px; }
+
+.side { display: grid; gap: 22px; align-content: start; }
+.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 16px; counter-reset: s; }
+.steps li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; counter-increment: s; }
+.steps li::before { content: counter(s); width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-family: var(--f-brand); font-weight: 600; background: var(--bg); border: 1.5px solid var(--gold); color: var(--gold); }
+.steps b { display: block; }
+.steps p { margin: 0; color: var(--muted); font-size: 14px; }
+.venue { padding: 18px; border-radius: 14px; border: 1px solid var(--line); display: grid; gap: 4px; }
+.venue .eyebrow { font-size: 11px; }
+
+.done { border: 1.5px solid var(--ok); border-radius: 18px; padding: 22px; display: grid; gap: 14px; }
+.done h3 { font-family: var(--f-display); font-size: 24px; }
+.done pre { white-space: pre-wrap; font: 13.5px/1.55 var(--f-body); background: var(--bg); border-radius: 12px; padding: 14px; margin: 0; border: 1px solid var(--line); overflow-x: auto; }
+.done .actions { display: flex; flex-wrap: wrap; gap: 10px; }
+.warn { font-size: 13.5px; color: var(--error); margin: 0; }
+.pstep { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+.pnum { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font-family: var(--f-brand); font-weight: 600; background: var(--ink); color: var(--bg); }
+.pbody { display: grid; gap: 10px; min-width: 0; }
+.pbody > b { font-size: 16px; padding-top: 4px; }
+.pnote { margin: 0; color: var(--muted); font-size: 14px; }
+.paybox { display: grid; grid-template-columns: minmax(0, 220px) minmax(0, 1fr); gap: 16px; align-items: start; }
+.paybox img { width: 100%; height: auto; border-radius: 14px; background: #fff; border: 1px solid var(--line); }
+.paydetails { display: grid; gap: 10px; min-width: 0; justify-items: start; }
+.small { font-size: 12.5px; color: var(--muted); }
+.upi-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.upi-row code { font: 600 14px/1.3 var(--f-body); background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px; word-break: break-all; user-select: all; }
+
+footer { background: var(--navy); color: #F7EEDD; }
+footer .wrap { padding-block: 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; font-size: 14px; }
+footer .word { font-size: 24px; }
+footer .word span:nth-child(6), footer .word span:nth-child(7) { color: #F7EEDD; }
+footer p { margin: 0; color: #C9C3D6; }
+footer .gold { color: #E3C27F; }
+
+@media (max-width: 760px) {
+  .ev { grid-template-columns: minmax(0, 1fr); }
+  .book .wrap { grid-template-columns: minmax(0, 1fr); }
+  .top nav { display: none; }
+}
+@media (max-width: 460px) {
+  .row, .facts, .paybox { grid-template-columns: minmax(0, 1fr); }
+  .paybox img { max-width: 260px; }
+  .child { grid-template-columns: minmax(0, 1fr) 80px auto; }
+}
+@media (prefers-reduced-motion: no-preference) { .btn { transition: filter .15s, transform .15s; } .btn:active { transform: scale(.98); } }
+</style>
+
+<header class="wrap top">
+  <a class="mark" href="#top" aria-label="MONACHI home">
+    <span class="word" aria-hidden="true"><span>M</span><span>O</span><span>N</span><span>A</span><span>C</span><span>H</span><span>I</span></span>
+    <span class="tag">Crafting Celebrations</span>
+  </a>
+  <nav aria-label="Sections"><a href="#events">Events</a><a href="#book">Book a seat</a><a href="https://www.instagram.com/monachi.crafts/" target="_blank" rel="noopener">Instagram</a></nav>
+</header>
+<div class="strip" id="top"></div>
+
+<main>
+  <section class="wrap intro">
+    <span class="eyebrow">MONACHI Events</span>
+    <h1>Celebrations made by hand, for every age.</h1>
+    <p>Themed parties, craft afternoons and festival celebrations for children and families. Pick an event, book your child's place, and we'll confirm on WhatsApp.</p>
+    <div class="rule" aria-hidden="true"><i></i></div>
+  </section>
+
+  <section class="wrap" id="events" aria-labelledby="events-h">
+    <h2 class="section-title" id="events-h">Upcoming events</h2>
+    <div class="events" id="event-list"></div>
+  </section>
+
+  <section class="book" id="book" aria-labelledby="book-h">
+    <div class="wrap">
+      <div>
+        <h2 id="book-h">Book a place</h2>
+        <p class="sub">Pre-booking is a must. Fill this in and send it to us on WhatsApp in one tap.</p>
+
+        <form id="form" novalidate>
+          <label for="event">Event
+            <select id="event" name="event"></select>
+          </label>
+          <div class="row">
+            <label for="parent">Parent's name
+              <input id="parent" name="parent" autocomplete="name" placeholder="e.g. Neha Sharma">
+              <span class="err" id="parent-err"></span>
+            </label>
+            <label for="phone">Parent's WhatsApp number
+              <input id="phone" name="phone" inputmode="tel" autocomplete="tel" placeholder="10-digit mobile number">
+              <span class="err" id="phone-err"></span>
+            </label>
+          </div>
+          <fieldset>
+            <legend id="kids-legend">Children attending</legend>
+            <div id="kids"></div>
+            <span class="err" id="kids-err"></span>
+            <button type="button" class="add" id="add-kid">+ Add another child</button>
+          </fieldset>
+          <label for="notes">Anything we should know? <small>(optional: allergies, costume plans, siblings)</small>
+            <textarea id="notes" name="notes" rows="3"></textarea>
+          </label>
+          <div class="total" aria-live="polite"><span id="total-label">1 child × ₹250</span><b id="total">₹250</b></div>
+          <button class="btn btn-ink" type="submit" style="justify-self:start">Review booking</button>
+        </form>
+
+        <div class="done" id="done" hidden>
+          <h3>Three quick steps to confirm your place</h3>
+          <div class="pstep">
+            <span class="pnum">1</span>
+            <div class="pbody">
+              <b>Send your booking on WhatsApp</b>
+              <pre id="summary"></pre>
+              <p class="warn" id="no-number" hidden>WhatsApp booking opens shortly. Please copy these details and keep them handy.</p>
+              <div class="actions">
+                <a class="btn btn-wa" id="wa" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+                <button class="btn btn-ghost" type="button" id="copy">Copy details</button>
+                <button class="btn btn-ghost" type="button" id="edit">Edit</button>
+              </div>
+            </div>
+          </div>
+          <div class="pstep">
+            <span class="pnum">2</span>
+            <div class="pbody">
+              <b>Pay <span id="pay-amt">₹250</span> by UPI</b>
+              <p class="pnote">Use Google Pay, PhonePe, Paytm or any UPI app. Please add your booking code <b id="pay-code"></b> in the payment note.</p>
+              <div class="paybox">
+                <img src="assets/gpay-qr.png" alt="Google Pay QR code for UPI ID monikagupta17681@okaxis" width="460" height="519">
+                <div class="paydetails">
+                  <a class="btn btn-ink" id="upi-link" href="#">Pay ₹250 in a UPI app</a>
+                  <span class="small">Opens your UPI app on a phone with the amount filled in. If nothing opens, scan the QR code or pay to the UPI ID below.</span>
+                  <div class="upi-row"><code id="upi-id"></code><button class="btn btn-ghost" type="button" id="copy-upi">Copy UPI ID</button></div>
+                  <span class="small">On the same phone? Take a screenshot of the QR code and use "scan from gallery" in your UPI app.</span>
+                  <span class="small">The payee name shows as <b>Monika Gupta</b>, the MONACHI organiser.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="pstep">
+            <span class="pnum">3</span>
+            <div class="pbody">
+              <b>Send the payment screenshot</b>
+              <p class="pnote">Share it in the same WhatsApp chat. Once we confirm the payment, each child's Party Pass arrives on WhatsApp. Show it at the entry.</p>
+              <div class="actions"><a class="btn btn-wa" id="wa-paid" href="#" target="_blank" rel="noopener">Tell us you've paid</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="side" aria-label="How booking works">
+        <ol class="steps">
+          <li><div><b>Fill in the form</b><p>Your name, number and each child's name and age.</p></div></li>
+          <li><div><b>Send it on WhatsApp</b><p>Your details arrive as a ready-made message with a booking code.</p></div></li>
+          <li><div><b>Pay by UPI</b><p>Scan the Google Pay QR code shown after you book, then send us the screenshot.</p></div></li>
+          <li><div><b>Get your Party Pass</b><p>Once payment is confirmed, each child gets a personal Party Pass on WhatsApp. Show it at the entry.</p></div></li>
+        </ol>
+        <div class="venue" id="venue-box"></div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <span class="word" aria-hidden="true"><span>M</span><span>O</span><span>N</span><span>A</span><span>C</span><span>H</span><span>I</span></span>
+      <p class="gold">Crafting Celebrations</p>
+    </div>
+    <div style="display:grid;gap:4px">
+      <p>WhatsApp: <span id="contact-num" class="gold"></span></p>
+      <p>Instagram: <a class="gold" href="https://www.instagram.com/monachi.crafts/" target="_blank" rel="noopener">@monachi.crafts</a></p>
+      <p>Celebrations for kids, families and ladies' parties</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Bookings go to this WhatsApp number (country code + number, digits only), e.g. "919876543210".
+const WHATSAPP = "917217054807";
+const UPI_ID = "monikagupta17681@okaxis", UPI_NAME = "Monika Gupta";
+
+// Add future events here. status: "open" (bookable) or "soon" (coming soon card).
+const EVENTS = [
+  {
+    id: "halloween-2026", code: "HW", status: "open",
+    title: "Halloween Party", titleHtml: "Halloween <em>Party</em>",
+    lede: "Spooky fun awaits! An evening of games, crafts and costumes for little monsters.",
+    date: "Saturday, 31 October 2026", time: "5:00 PM – 7:00 PM",
+    ages: "4 – 14 years", minAge: 4, maxAge: 14, fee: 250,
+    venue: "Sunbeam Pre School premises",
+    activities: ["Fun Halloween games", "Snacks", "Craft activities", "Tattoo making"],
+    award: "Best Costume Award: the winner gets a special prize.",
+    poster: "assets/halloween-poster.jpg"
+  },
+  {
+    id: "diwali-2026", code: "DW", status: "soon",
+    title: "Diwali Celebration",
+    lede: "Diya painting, rangoli and festive crafts. Date and details are coming soon."
+  }
+];
+
+const $ = (s) => document.querySelector(s);
+const rupee = (n) => "₹" + n.toLocaleString("en-IN");
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const waLink = (text) => "https://wa.me/" + WHATSAPP + "?text=" + encodeURIComponent(text);
+const open = EVENTS.filter((e) => e.status === "open");
+
+function renderEvents() {
+  $("#event-list").innerHTML = EVENTS.map((e) => e.status === "open" ? `
+    <article class="ev live" id="${e.id}">
+      <img class="poster" src="${e.poster}" alt="${esc(e.title)} poster">
+      <div class="body">
+        <span class="status">Booking open</span>
+        <h3>${e.titleHtml}</h3>
+        <p class="lede">${esc(e.lede)}</p>
+        <dl class="facts">
+          <div><dt>Date</dt><dd>${esc(e.date)}</dd></div>
+          <div><dt>Time</dt><dd>${esc(e.time)}</dd></div>
+          <div><dt>Ages</dt><dd>${esc(e.ages)}</dd></div>
+          <div><dt>Entry</dt><dd>${rupee(e.fee)} per child</dd></div>
+          <div style="grid-column:1/-1"><dt>Venue</dt><dd>${esc(e.venue)}</dd></div>
+        </dl>
+        <ul class="acts">${e.activities.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>
+        <p class="award"><b>★</b> ${esc(e.award)}</p>
+        <div class="cta-row">
+          <a class="btn btn-orange" href="#book" data-book="${e.id}">Book now</a>
+          <span class="note">Pre-booking is a must</span>
+        </div>
+      </div>
+    </article>` : `
+    <article class="ev soon" id="${e.id}">
+      <div class="body">
+        <div class="txt">
+          <span class="status">Coming soon</span>
+          <h3><span class="diya" aria-hidden="true"></span>${esc(e.title)}</h3>
+          <p>${esc(e.lede)}</p>
+        </div>
+        ${WHATSAPP ? `<a class="btn btn-ghost" target="_blank" rel="noopener" href="${waLink("Hi MONACHI, please tell me when booking opens for the " + e.title + ".")}">Tell me when booking opens</a>` : ""}
+      </div>
+    </article>`).join("");
+}
+
+function kidRow(i) {
+  const d = document.createElement("div");
+  d.className = "child";
+  d.innerHTML = `
+    <label for="kid-name-${i}">Child's name<input id="kid-name-${i}" data-k="name" autocomplete="off"></label>
+    <label for="kid-age-${i}">Age<input id="kid-age-${i}" data-k="age" inputmode="numeric" maxlength="2"></label>
+    <button type="button" class="rm" aria-label="Remove child">×</button>`;
+  d.querySelector(".rm").addEventListener("click", () => { d.remove(); syncKids(); });
+  return d;
+}
+let kidSeq = 0;
+function addKid() { if ($("#kids").children.length >= 6) return; $("#kids").appendChild(kidRow(kidSeq++)); syncKids(); }
+function syncKids() {
+  const rows = [...$("#kids").children];
+  rows.forEach((r) => (r.querySelector(".rm").hidden = rows.length === 1));
+  $("#add-kid").hidden = rows.length >= 6;
+  updateTotal();
+}
+function currentEvent() { return EVENTS.find((e) => e.id === $("#event").value) || open[0]; }
+function updateTotal() {
+  const ev = currentEvent(), n = $("#kids").children.length;
+  $("#total-label").textContent = `${n} ${n === 1 ? "child" : "children"} × ${rupee(ev.fee)}`;
+  $("#total").textContent = rupee(n * ev.fee);
+  $("#kids-legend").textContent = `Children attending (ages ${ev.ages})`;
+  $("#venue-box").innerHTML = `<span class="eyebrow">Venue</span><b>${esc(ev.venue)}</b><span style="color:var(--muted);font-size:14px">${esc(ev.date)} · ${esc(ev.time)}</span>`;
+}
+
+function setErr(id, msg) { $("#" + id + "-err").textContent = msg; $("#" + id).setAttribute("aria-invalid", msg ? "true" : "false"); }
+function validate() {
+  const ev = currentEvent();
+  let ok = true;
+  const parent = $("#parent").value.trim();
+  setErr("parent", parent.length < 2 ? "Please enter your name." : ""); if (parent.length < 2) ok = false;
+  let phone = $("#phone").value.replace(/\D/g, "");
+  if (phone.length === 12 && phone.startsWith("91")) phone = phone.slice(2);
+  if (phone.length === 11 && phone.startsWith("0")) phone = phone.slice(1);
+  const phoneOk = /^[6-9]\d{9}$/.test(phone);
+  setErr("phone", phoneOk ? "" : "Enter a 10-digit Indian mobile number."); if (!phoneOk) ok = false;
+  const kids = [...$("#kids").children].map((r) => {
+    const n = r.querySelector('[data-k="name"]'), a = r.querySelector('[data-k="age"]');
+    const age = parseInt(a.value, 10), nameOk = n.value.trim().length > 0, ageOk = age >= ev.minAge && age <= ev.maxAge;
+    n.setAttribute("aria-invalid", nameOk ? "false" : "true"); a.setAttribute("aria-invalid", ageOk ? "false" : "true");
+    if (!nameOk || !ageOk) ok = false;
+    return { name: n.value.trim(), age };
+  });
+  const kidsBad = [...$("#kids").querySelectorAll("input")].some((i) => i.getAttribute("aria-invalid") === "true");
+  $("#kids-err").textContent = kidsBad ? `Add each child's name and an age from ${ev.minAge} to ${ev.maxAge}.` : "";
+  if (!ok) { const bad = document.querySelector('[aria-invalid="true"]'); if (bad) bad.focus(); }
+  return ok ? { ev, parent, phone, kids, notes: $("#notes").value.trim() } : null;
+}
+
+function bookingCode(ev) {
+  const a = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789";
+  let s = ""; for (let i = 0; i < 4; i++) s += a[Math.floor(Math.random() * a.length)];
+  return `MON-${ev.code}-${s}`;
+}
+
+$("#form").addEventListener("submit", (e) => {
+  e.preventDefault();
+  const b = validate(); if (!b) return;
+  const code = bookingCode(b.ev);
+  const lines = [
+    `New booking request: ${b.ev.title}`,
+    `Booking code: ${code}`,
+    `${b.ev.date}, ${b.ev.time}`,
+    `Venue: ${b.ev.venue}`,
+    ``,
+    `Parent: ${b.parent}`,
+    `WhatsApp: +91 ${b.phone}`,
+    ...b.kids.map((k, i) => `Child ${i + 1}: ${k.name}, age ${k.age}`),
+    `Total: ${b.kids.length} × ${rupee(b.ev.fee)} = ${rupee(b.kids.length * b.ev.fee)}`,
+  ];
+  if (b.notes) lines.push(`Notes: ${b.notes}`);
+  const text = lines.join("\n");
+  $("#summary").textContent = text;
+  const wa = $("#wa");
+  if (WHATSAPP) { wa.href = waLink(text); wa.hidden = false; $("#no-number").hidden = true; }
+  else { wa.hidden = true; $("#no-number").hidden = false; }
+  const amt = b.kids.length * b.ev.fee;
+  $("#pay-amt").textContent = rupee(amt); $("#pay-code").textContent = code;
+  $("#upi-link").textContent = `Pay ${rupee(amt)} in a UPI app`;
+  $("#upi-link").href = `upi://pay?pa=${UPI_ID}&pn=${encodeURIComponent(UPI_NAME)}&am=${amt}&cu=INR&tn=${encodeURIComponent(code)}`;
+  $("#wa-paid").href = waLink(`Hi MONACHI, I have paid ${rupee(amt)} for booking ${code} (${b.ev.title}). Sending the payment screenshot now.`);
+  $("#form").hidden = true; $("#done").hidden = false;
+  $("#done").scrollIntoView({ block: "start", behavior: "smooth" });
+});
+$("#upi-id").textContent = UPI_ID;
+$("#copy-upi").addEventListener("click", (ev) => {
+  const btn = ev.currentTarget, done = (t) => { btn.textContent = t; setTimeout(() => (btn.textContent = "Copy UPI ID"), 1800); };
+  const sel = () => { const r = document.createRange(); r.selectNodeContents($("#upi-id")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); done("Selected, press copy"); };
+  try { navigator.clipboard.writeText(UPI_ID).then(() => done("Copied"), sel); } catch (_) { sel(); }
+});
+$("#edit").addEventListener("click", () => { $("#done").hidden = true; $("#form").hidden = false; });
+$("#copy").addEventListener("click", (ev) => {
+  const btn = ev.currentTarget, text = $("#summary").textContent;
+  const flash = (t) => { btn.textContent = t; setTimeout(() => (btn.textContent = "Copy details"), 1800); };
+  try {
+    navigator.clipboard.writeText(text).then(() => flash("Copied"), () => selectSummary(flash));
+  } catch (_) { selectSummary(flash); }
+});
+function selectSummary(flash) { const r = document.createRange(); r.selectNodeContents($("#summary")); const s = getSelection(); s.removeAllRanges(); s.addRange(r); flash("Selected, press copy"); }
+
+// init
+$("#event").innerHTML = open.map((e) => `<option value="${e.id}">${esc(e.title)} · ${esc(e.date)}</option>`).join("");
+$("#event").addEventListener("change", updateTotal);
+$("#add-kid").addEventListener("click", addKid);
+$("#contact-num").textContent = WHATSAPP ? "+91 " + WHATSAPP.slice(2, 7) + " " + WHATSAPP.slice(7) : "number coming soon";
+renderEvents();
+document.addEventListener("click", (e) => { const t = e.target.closest("[data-book]"); if (t) $("#event").value = t.dataset.book, updateTotal(); });
+addKid();
+const h = location.hash.slice(1);
+if (open.some((e) => e.id === h)) $("#event").value = h;
+updateTotal();
+</script>
+
+</body>
+</html>
