@@ -7,7 +7,7 @@ window.MONACHI = {
 
   // Razorpay Key ID (starts with rzp_test_ or rzp_live_). This one is safe to publish.
   // NEVER put the Key Secret here. It goes only into Apps Script → Script properties.
-  RAZORPAY_KEY_ID: "",
+  RAZORPAY_KEY_ID: "rzp_test_Ts4Ojh2zAd43IX",
 
   WHATSAPP: "917217054807",          // country code + number, digits only
   UPI_ID: "monikagupta17681@okaxis", // used in WhatsApp + UPI mode
