@@ -18,7 +18,7 @@ Everything here is free. Razorpay takes its standard fee from each payment (abou
    |---|---|
    | `RAZORPAY_KEY_ID` | from Razorpay → Account & Settings → API Keys (starts `rzp_test_` or `rzp_live_`) |
    | `RAZORPAY_KEY_SECRET` | shown once when you generate the key. **Never share it or put it on GitHub.** |
-   | `OWNER_EMAIL` | the email where you want booking alerts |
+   | `OWNER_EMAIL` | `monachi.bookings@gmail.com` (booking alerts arrive here) |
    | `OWNER_WHATSAPP` | `917217054807` |
    | `CALLMEBOT_APIKEY` | from step 3 below (optional) |
 

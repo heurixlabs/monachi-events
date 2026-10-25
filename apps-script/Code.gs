@@ -158,9 +158,9 @@ function emailParent(rec) {
       <tr><td style="padding:4px 12px 4px 0;color:#66657A">Venue</td><td>${esc(ev.venue || "")}</td></tr>
       <tr><td style="padding:4px 12px 4px 0;color:#66657A">Paid</td><td>₹${rec.amount}</td></tr>
     </table>
-    <p>Questions? WhatsApp us on +91 72170 54807 · Instagram @monachi.crafts</p>
+    <p>Questions? WhatsApp us on +91 72170 54807, email monachi.bookings@gmail.com · Instagram @monachi.crafts</p>
     <p style="color:#B8924A">Team MONACHI · Crafting Celebrations</p></div>`;
-  MailApp.sendEmail({ to: rec.email, subject: `Your MONACHI Party Pass · ${rec.event} · ${rec.code}`, htmlBody: html, attachments: [pdf], name: "MONACHI Events", replyTo: prop("OWNER_EMAIL") || undefined });
+  MailApp.sendEmail({ to: rec.email, subject: `Your MONACHI Party Pass · ${rec.event} · ${rec.code}`, htmlBody: html, attachments: [pdf], name: "MONACHI Events", replyTo: prop("OWNER_EMAIL") || "monachi.bookings@gmail.com" });
 }
 
 function passHtml(rec, ev, kid, i) {

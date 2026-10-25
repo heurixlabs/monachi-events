@@ -10,6 +10,7 @@ window.MONACHI = {
   RAZORPAY_KEY_ID: "rzp_test_Ts4Ojh2zAd43IX",
 
   WHATSAPP: "917217054807",          // country code + number, digits only
+  EMAIL: "monachi.bookings@gmail.com",
   UPI_ID: "monikagupta17681@okaxis", // used in WhatsApp + UPI mode
   UPI_NAME: "Monika Gupta",
   INSTAGRAM: "monachi.crafts",
