@@ -15,44 +15,55 @@ window.MONACHI = {
   UPI_NAME: "Monika Gupta",
   INSTAGRAM: "monachi.crafts",
 
+  // Live website address (used for share links and calendar invites).
+  SITE_URL: "https://heurixlabs.github.io/monachi-events/",
+
   // status: "open" = booking live, "soon" = coming soon card with "Notify me".
+  // slug: the event's own page, e.g. slug "halloween" → SITE_URL + "halloween/" (run tools/build_event_pages.py after adding one)
+  // start / end: ISO date-time with +05:30 (drives the countdown and "Add to calendar"); leave out until the date is fixed.
+  // mapUrl: Google Maps link for the venue.
   // theme: halloween | diwali | christmas | newyear | baking | monachi (colours of the card and the pass)
   // Prices here are for display only. The real price is set in apps-script/Code.gs.
   EVENTS: [
     {
-      id: "halloween-2026", code: "HW", status: "open", theme: "halloween",
+      id: "halloween-2026", slug: "halloween", code: "HW", status: "open", theme: "halloween",
       title: "Halloween Party", kicker: "Kids party",
       lede: "Spooky fun awaits! An evening of games, crafts and costumes for little monsters.",
       date: "Saturday, 31 October 2026", short: "Sat 31 Oct 2026", time: "5:00 – 7:00 PM",
+      start: "2026-10-31T17:00:00+05:30", end: "2026-10-31T19:00:00+05:30",
       ages: "4 – 14 years", minAge: 4, maxAge: 14, fee: 250,
-      venue: "Sunbeam Pre School premises",
+      venue: "Sunbeam Pre School premises", city: "Haridwar",
+      mapUrl: "https://maps.app.goo.gl/pyUiNYeGjpbrEBzr9",
       activities: ["Fun Halloween games", "Snacks", "Craft activities", "Tattoo making"],
       award: "Best Costume Award: the winner gets a special prize.",
       poster: "assets/halloween-poster.jpg"
     },
     {
-      id: "diwali-2026", code: "DW", status: "soon", theme: "diwali",
+      id: "diwali-2026", slug: "diwali", code: "DW", status: "soon", theme: "diwali",
       title: "Diwali DIY Party", kicker: "Kids & family",
       lede: "Diya painting, rangoli and festive crafts for children and families.",
       when: "November 2026 · date coming soon",
+      venue: "Breeze & Beans café", city: "Haridwar",
+      mapUrl: "https://maps.app.goo.gl/gDgER1nTx5WmNH6Z6",
+      activities: ["Diya painting", "Rangoli", "Festive crafts", "Snacks"],
       flyer: "assets/flyers/diwali.jpg"
     },
     {
-      id: "baking-2026", code: "BK", status: "soon", theme: "baking",
+      id: "baking-2026", slug: "little-baker", code: "BK", status: "soon", theme: "baking",
       title: "Little Baker Bakery Workshop", kicker: "Kids workshop",
       lede: "Little chefs mix, bake and decorate treats, and make chocolates to take home.",
       when: "November & December 2026",
       flyer: "assets/flyers/little-baker.jpg"
     },
     {
-      id: "christmas-2026", code: "XM", status: "soon", theme: "christmas",
+      id: "christmas-2026", slug: "christmas", code: "XM", status: "soon", theme: "christmas",
       title: "Christmas Party", kicker: "Kids party",
       lede: "Ornament making, Christmas crafts, games and a visit from Santa.",
       when: "December 2026 · date coming soon",
       flyer: "assets/flyers/christmas.jpg"
     },
     {
-      id: "newyear-2026", code: "NY", status: "soon", theme: "newyear",
+      id: "newyear-2026", slug: "new-year", code: "NY", status: "soon", theme: "newyear",
       title: "New Year Bash", kicker: "Kids & family",
       lede: "Party hats, countdown crafts, music and games to welcome 2027.",
       when: "Late December 2026 · date coming soon",

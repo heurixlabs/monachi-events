@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-root="" data-event="">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -102,7 +102,9 @@ section.block { padding-bottom: 52px; }
 .soon h3 { font-family: var(--f-brand); font-weight: 600; font-size: 21px; line-height: 1.2; }
 .soon p { margin: 0; color: var(--muted); font-size: 14px; }
 .soon .when { font-weight: 600; color: var(--ink); font-size: 13.5px; }
-.soon .btn { margin-top: 8px; justify-self: start; }
+.soon .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin-top: 8px; }
+.btn-link-sm { font-size: 13.5px; font-weight: 600; color: var(--teal); text-decoration: none; }
+.btn-link-sm:hover { text-decoration: underline; }
 
 /* buttons + forms */
 .btn { appearance: none; border: 0; cursor: pointer; font: 600 15px/1 var(--f-body); padding: 14px 22px; border-radius: 99px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 8px; }
@@ -201,6 +203,91 @@ footer .word span:nth-child(6), footer .word span:nth-child(7) { color: #F7EEDD;
 footer p { margin: 0; color: #C9C3D6; }
 footer .gold { color: #E3C27F; }
 
+/* festive canvas + motion */
+.fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+.ev { position: relative; isolation: isolate; }
+.ev > .poster, .ev > .body { position: relative; z-index: 1; }
+.js .reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s ease; }
+.js .reveal.in { opacity: 1; transform: none; }
+.poster, .soon .art img, .past .art img { transition: transform .45s ease, box-shadow .45s ease; }
+.ev:hover .poster { transform: scale(1.02) rotate(-.4deg); }
+.soon:hover .art img, .past article:hover .art img { transform: scale(1.04); }
+.btn-glow { animation: glow 2.6s ease-in-out infinite; }
+@keyframes glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(240, 140, 0, .0); } 50% { box-shadow: 0 0 0 8px rgba(240, 140, 0, .22); } }
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+  .btn-glow { animation: none; }
+  .poster, .soon .art img, .past .art img { transition: none; }
+}
+
+/* date badge, countdown, map + calendar */
+.when-row { display: flex; align-items: center; gap: 14px; }
+.datebadge { width: 54px; flex: none; border-radius: 12px; overflow: hidden; text-align: center; background: #FFF9EF; color: #1D2240; box-shadow: 0 2px 10px rgba(0, 0, 0, .18); }
+.datebadge b { display: block; background: #E0306A; color: #fff; font: 600 11px/1.9 var(--f-body); letter-spacing: .12em; }
+.datebadge span { display: block; font: 700 22px/1.35 var(--f-brand); }
+.datebadge.tba span { font-size: 14px; line-height: 2.1; }
+.when-row .wtxt { display: grid; line-height: 1.35; }
+.when-row .wtxt small { opacity: .8; font-size: 13.5px; }
+.pin { width: 54px; flex: none; display: grid; place-items: center; }
+.pin svg { width: 24px; height: 24px; }
+.maplink { color: inherit; font-size: 13.5px; opacity: .85; }
+.countdown { display: inline-flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; }
+.countdown .cd-l { opacity: .8; }
+.countdown .cd-u { display: inline-grid; justify-items: center; min-width: 52px; padding: 6px 8px; border-radius: 10px; background: rgba(255, 249, 239, .1); border: 1px solid rgba(255, 249, 239, .2); }
+.countdown .cd-u b { font: 700 20px/1 var(--f-brand); font-variant-numeric: tabular-nums; }
+.countdown .cd-u i { font-style: normal; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; opacity: .75; margin-top: 3px; }
+.countdown.done { font-weight: 600; }
+.btn-line { background: transparent; color: inherit; border: 1.5px solid rgba(255, 249, 239, .35); }
+.calmenu { position: relative; display: inline-block; }
+.calmenu .menu { position: absolute; left: 0; top: calc(100% + 6px); z-index: 5; background: var(--surface); color: var(--ink); border: 1px solid var(--line); border-radius: 12px; padding: 6px; display: grid; min-width: 210px; box-shadow: 0 10px 30px rgba(0, 0, 0, .2); }
+.calmenu .menu a, .calmenu .menu button { all: unset; cursor: pointer; padding: 9px 12px; border-radius: 8px; font-size: 14px; }
+.calmenu .menu a:hover, .calmenu .menu button:hover { background: var(--chip); }
+
+/* hosted by */
+.hosted { display: grid; gap: 10px; padding: 16px 18px; border-radius: 14px; border: 1px solid var(--line); }
+.hosted .who { display: flex; align-items: center; gap: 12px; }
+.hosted .logo { width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; background: #FFF9EF; font: 700 20px var(--f-brand); color: #E0306A; border: 1px solid var(--line); }
+.hosted .links { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13.5px; }
+.hosted .links a { color: var(--teal); }
+
+/* phone booking bar */
+.bookbar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 15; display: none; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 12px max(16px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+  background: rgba(27, 19, 53, .96); color: #F7EEDD; box-shadow: 0 -6px 24px rgba(0, 0, 0, .25); transform: translateY(110%); transition: transform .3s ease; }
+.bookbar.show { transform: none; }
+.bookbar .bb-t { display: grid; line-height: 1.3; font-size: 13px; }
+.bookbar .bb-t b { font: 600 15px var(--f-brand); }
+@media (max-width: 760px) { .bookbar { display: flex; } body.has-bookbar footer { padding-bottom: 76px; } }
+
+/* event page (Luma-style) */
+.ehero { position: relative; isolation: isolate; color: #F7EEDD; overflow: hidden; }
+.ehero > .wrap { position: relative; z-index: 1; padding-block: 34px 48px; display: grid; grid-template-columns: minmax(0, 330px) minmax(0, 1fr); gap: 36px; align-items: start; }
+.ehero .left { display: grid; gap: 18px; position: sticky; top: 16px; }
+.ehero .left .zoom img { width: 100%; height: auto; display: block; border-radius: 18px; box-shadow: 0 18px 50px rgba(0, 0, 0, .45); }
+.ehero .left .hosted { border-color: rgba(255, 249, 239, .18); background: rgba(10, 8, 20, .35); }
+.ehero .left .hosted .links a { color: #FFD27A; }
+.ehero .right { display: grid; gap: 18px; min-width: 0; }
+.ehero .chip { justify-self: start; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 5px 12px; border-radius: 99px; background: rgba(255, 249, 239, .14); border: 1px solid rgba(255, 249, 239, .25); }
+.ehero h1 { font: 700 clamp(32px, 5vw, 50px)/1.06 var(--f-brand); }
+.regcard { border-radius: 16px; overflow: hidden; border: 1px solid rgba(255, 249, 239, .2); background: rgba(10, 8, 20, .45); backdrop-filter: blur(6px); }
+.regcard .rh { padding: 10px 16px; font-size: 13px; opacity: .85; border-bottom: 1px solid rgba(255, 249, 239, .14); }
+.regcard .rb { padding: 16px; display: grid; gap: 14px; }
+.regcard .price { display: flex; flex-wrap: wrap; gap: 4px 18px; align-items: baseline; }
+.regcard .price b { font: 700 28px var(--f-brand); }
+.regcard .actions .btn { flex: 1 1 auto; }
+.about { display: grid; gap: 12px; padding-top: 6px; border-top: 1px solid rgba(255, 249, 239, .14); }
+.about h2 { font: 600 14px var(--f-body); letter-spacing: .12em; text-transform: uppercase; opacity: .8; margin-top: 10px; }
+.about p { margin: 0; max-width: 62ch; }
+.hl { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.hl li { padding: 10px 14px; border-radius: 12px; background: rgba(255, 249, 239, .08); border: 1px solid rgba(255, 249, 239, .14); }
+.morelink { color: #FFD27A; }
+@media (max-width: 820px) {
+  .ehero > .wrap { grid-template-columns: minmax(0, 1fr); }
+  .ehero .left { position: static; grid-template-columns: minmax(0, 1fr); }
+  .ehero .left .zoom img { max-width: 360px; margin: 0 auto; }
+  .hl { grid-template-columns: minmax(0, 1fr); }
+}
+
 @media (max-width: 820px) {
   .ev, .book > .wrap, .parties { grid-template-columns: minmax(0, 1fr); }
   .top nav { gap: 12px; font-size: 13px; }
@@ -211,6 +298,7 @@ footer .gold { color: #E3C27F; }
   .child { grid-template-columns: minmax(0, 1fr) 80px auto; }
 }
 </style>
+<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
@@ -224,19 +312,21 @@ footer .gold { color: #E3C27F; }
 <div class="strip" id="top"></div>
 
 <main>
-  <section class="wrap intro">
+  <section class="ehero" id="event-hero" hidden></section>
+
+  <section class="wrap intro main-only">
     <span class="eyebrow">MONACHI Events</span>
     <h1>Celebrations made by hand, for every age.</h1>
     <p>Themed parties, craft workshops and festival celebrations for children and families. Book online, pay securely and get your Party Pass straight away.</p>
     <div class="rule" aria-hidden="true"><i></i></div>
   </section>
 
-  <section class="wrap block" id="events" aria-labelledby="events-h">
+  <section class="wrap block main-only" id="events" aria-labelledby="events-h">
     <h2 class="section-title" id="events-h">Booking now</h2>
     <div id="live-list" style="display:grid;gap:20px"></div>
   </section>
 
-  <section class="wrap block" id="upcoming" aria-labelledby="up-h">
+  <section class="wrap block main-only" id="upcoming" aria-labelledby="up-h">
     <h2 class="section-title" id="up-h">Coming soon</h2>
     <p class="section-sub">Details and booking open soon. Tap "Notify me" and we'll tell you the moment booking opens.</p>
     <div class="soon-grid" id="soon-list"></div>
@@ -339,17 +429,18 @@ footer .gold { color: #E3C27F; }
       <aside class="side" aria-label="How booking works">
         <ol class="steps" id="how-steps"></ol>
         <div class="venue" id="venue-box"></div>
+        <div class="hosted" id="hosted-side"></div>
       </aside>
     </div>
   </section>
 
-  <section class="wrap block" id="workshops" aria-labelledby="ws-h">
+  <section class="wrap block main-only" id="workshops" aria-labelledby="ws-h">
     <h2 class="section-title" id="ws-h">Our past workshops</h2>
     <p class="section-sub">A look at what little hands have made with us.</p>
     <div class="past" id="past-list"></div>
   </section>
 
-  <section class="wrap block" id="parties" aria-labelledby="pt-h">
+  <section class="wrap block main-only" id="parties" aria-labelledby="pt-h">
     <h2 class="section-title" id="pt-h">Private parties</h2>
     <p class="section-sub">Planning a birthday or a kitty party? Tell us about it and we'll plan a DIY celebration around your group.</p>
     <div class="parties">
@@ -400,6 +491,11 @@ footer .gold { color: #E3C27F; }
   </div>
 </div>
 
+<div class="bookbar" id="bookbar" aria-hidden="true">
+  <div class="bb-t"><b id="bb-title"></b><span id="bb-sub"></span></div>
+  <a class="btn btn-orange btn-sm" href="#book" id="bb-btn">Book now</a>
+</div>
+
 <footer>
   <div class="wrap">
     <div>
@@ -422,6 +518,7 @@ footer .gold { color: #E3C27F; }
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="config.js"></script>
 <script src="pass.js"></script>
+<script src="fx.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

@@ -15,6 +15,65 @@ const cleanPhone = (v) => { let p = String(v || "").replace(/\D/g, ""); if (p.le
 const phoneOk = (p) => /^[6-9]\d{9}$/.test(p);
 const emailOk = (e) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(e);
 
+// Event pages live one folder down (e.g. /halloween/) and set data-root="../" and data-event on <html>.
+const ROOT = document.documentElement.dataset.root || "";
+const EVENT_ID = document.documentElement.dataset.event || "";
+const asset = (p) => (p && !/^(https?:|data:)/.test(p) ? ROOT + p : p);
+const pageUrl = (e) => (M.SITE_URL || "") + (e.slug ? e.slug + "/" : "");
+const MONTHS = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+const PIN = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>';
+
+function dateBadge(e) {
+  if (!e.start) return `<span class="datebadge tba" aria-hidden="true"><b>DATE</b><span>TBA</span></span>`;
+  const d = new Date(e.start);
+  const ist = new Date(d.getTime() + (330 + d.getTimezoneOffset()) * 60000); // show the India date
+  return `<span class="datebadge" aria-hidden="true"><b>${MONTHS[ist.getMonth()]}</b><span>${ist.getDate()}</span></span>`;
+}
+function whenRow(e) {
+  return `<div class="when-row">${dateBadge(e)}<span class="wtxt"><b>${esc(e.date || e.when || "Date to be announced")}</b><small>${esc(e.time || (e.date ? "" : "We'll announce the date soon"))}</small></span></div>`;
+}
+function venueRow(e) {
+  if (!e.venue) return "";
+  return `<div class="when-row"><span class="pin">${PIN}</span><span class="wtxt"><b>${esc(e.venue)}${e.city ? ", " + esc(e.city) : ""}</b>${e.mapUrl ? `<a class="maplink" href="${e.mapUrl}" target="_blank" rel="noopener">Open in Google Maps ↗</a>` : ""}</span></div>`;
+}
+function countdownEl(e) { return e.start ? `<div class="countdown" data-start="${e.start}" data-end="${e.end || e.start}" aria-live="polite"></div>` : ""; }
+function tickCountdowns() {
+  const now = Date.now();
+  document.querySelectorAll(".countdown").forEach((el) => {
+    const st = Date.parse(el.dataset.start), en = Date.parse(el.dataset.end);
+    if (now >= en) { el.className = "countdown done"; el.textContent = "This event has ended"; return; }
+    if (now >= st) { el.className = "countdown done"; el.textContent = "Happening now!"; return; }
+    let m = Math.floor((st - now) / 60000); const d = Math.floor(m / 1440); m -= d * 1440; const h = Math.floor(m / 60); m -= h * 60;
+    el.className = "countdown";
+    el.innerHTML = `<span class="cd-l">Starts in</span>` + [[d, "days"], [h, "hours"], [m, "mins"]].map(([v, l]) => `<span class="cd-u"><b>${v}</b><i>${l}</i></span>`).join("");
+  });
+}
+const gcalDate = (iso) => new Date(iso).toISOString().replace(/[-:]/g, "").replace(/\.\d{3}/, "");
+function calendarMenu(e) {
+  if (!e.start) return "";
+  const details = `${e.lede || ""}\nBook: ${pageUrl(e)}`;
+  const where = [e.venue, e.city].filter(Boolean).join(", ");
+  const g = "https://calendar.google.com/calendar/render?action=TEMPLATE&text=" + encodeURIComponent("MONACHI · " + e.title) +
+    "&dates=" + gcalDate(e.start) + "/" + gcalDate(e.end || e.start) + "&details=" + encodeURIComponent(details) + "&location=" + encodeURIComponent(where);
+  return `<span class="calmenu"><button class="btn btn-line btn-sm" type="button" data-cal="${e.id}" aria-expanded="false">📅 Add to calendar</button>
+    <span class="menu" hidden><a href="${g}" target="_blank" rel="noopener">Google Calendar</a><button type="button" data-ics="${e.id}">Apple / Outlook (.ics file)</button></span></span>`;
+}
+function downloadIcs(e) {
+  const stamp = gcalDate(new Date().toISOString());
+  const ics = ["BEGIN:VCALENDAR", "VERSION:2.0", "PRODID:-//MONACHI//Events//EN", "BEGIN:VEVENT", `UID:${e.id}@monachi-events`, `DTSTAMP:${stamp}`,
+    `DTSTART:${gcalDate(e.start)}`, `DTEND:${gcalDate(e.end || e.start)}`, `SUMMARY:MONACHI · ${e.title}`,
+    `LOCATION:${[e.venue, e.city].filter(Boolean).join(", ").replace(/,/g, "\\,")}`, `DESCRIPTION:Book: ${pageUrl(e)}`, `URL:${pageUrl(e)}`, "END:VEVENT", "END:VCALENDAR"].join("\r\n");
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(new Blob([ics], { type: "text/calendar" })); a.download = `MONACHI-${e.slug || e.id}.ics`;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+function hostedBox() {
+  const num = "+91 " + M.WHATSAPP.slice(2, 7) + " " + M.WHATSAPP.slice(7);
+  return `<span class="eyebrow">Hosted by</span>
+    <div class="who"><span class="logo" aria-hidden="true">M</span><span><b>MONACHI</b><br><small>Crafting Celebrations</small></span></div>
+    <div class="links"><a href="https://www.instagram.com/${M.INSTAGRAM}/" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/${M.WHATSAPP}" target="_blank" rel="noopener">WhatsApp ${num}</a><a href="mailto:${M.EMAIL}">${esc(M.EMAIL)}</a></div>`;
+}
+
 async function api(action, data) {
   const res = await fetch(M.BACKEND_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ action, ...data }) });
   const json = await res.json();
@@ -25,45 +84,94 @@ async function api(action, data) {
 /* ---------- Events ---------- */
 function renderEvents() {
   $("#live-list").innerHTML = open.length ? open.map((e) => `
-    <article class="ev" id="${e.id}">
-      <img class="poster" src="${e.poster}" alt="${esc(e.title)} poster" width="720" height="1080">
+    <article class="ev reveal" id="${e.id}">
+      <canvas class="fx" data-theme="${e.theme}" aria-hidden="true"></canvas>
+      <img class="poster" src="${asset(e.poster)}" alt="${esc(e.title)} poster" width="720" height="1080">
       <div class="body">
         <span class="status">Booking open</span>
         <h3>${esc(e.title.split(" ").slice(0, -1).join(" "))} <em>${esc(e.title.split(" ").slice(-1)[0])}</em></h3>
         <p class="lede">${esc(e.lede)}</p>
+        ${whenRow(e)}
+        ${venueRow(e)}
+        ${countdownEl(e)}
         <dl class="facts">
-          <div><dt>Date</dt><dd>${esc(e.date)}</dd></div>
-          <div><dt>Time</dt><dd>${esc(e.time)}</dd></div>
           <div><dt>Ages</dt><dd>${esc(e.ages)}</dd></div>
           <div><dt>Entry</dt><dd>${rupee(e.fee)} per child</dd></div>
-          <div style="grid-column:1/-1"><dt>Venue</dt><dd>${esc(e.venue)}</dd></div>
         </dl>
         ${e.activities ? `<ul class="acts">${e.activities.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>` : ""}
         ${e.award ? `<p class="award"><b>★</b> ${esc(e.award)}</p>` : ""}
-        <div class="cta-row"><a class="btn btn-orange" href="#book" data-book="${e.id}">Book now</a><span class="note">Pre-booking is a must</span></div>
+        <div class="cta-row"><a class="btn btn-orange btn-glow" href="#book" data-book="${e.id}">Book now</a>${calendarMenu(e)}${e.slug ? `<a class="note" href="${ROOT}${e.slug}/">Event page →</a>` : ""}</div>
       </div>
     </article>`).join("") : `<p class="section-sub">New events are coming soon. Tap "Notify me" below.</p>`;
 
   $("#soon-list").innerHTML = soon.map((e) => `
-    <article class="soon" id="${e.id}">
-      <div class="art${e.flyer ? " flyer" : ""}">${e.flyer ? `<button class="zoom" type="button" data-view="${e.flyer}" aria-label="View ${esc(e.title)} flyer"><img src="${e.flyer}" alt="${esc(e.title)} flyer" loading="lazy" width="900" height="1350"></button>` : e.photo ? `<img src="${e.photo}" alt="" loading="lazy">` : eventArt(e.theme)}${e.flyer ? "" : `<span class="badge">Coming soon</span>`}</div>
+    <article class="soon reveal" id="${e.id}">
+      <div class="art${e.flyer ? " flyer" : ""}">${e.flyer ? `<button class="zoom" type="button" data-view="${asset(e.flyer)}" aria-label="View ${esc(e.title)} flyer"><img src="${asset(e.flyer)}" alt="${esc(e.title)} flyer" loading="lazy" width="900" height="1350"></button>` : e.photo ? `<img src="${asset(e.photo)}" alt="" loading="lazy">` : eventArt(e.theme)}${e.flyer ? "" : `<span class="badge">Coming soon</span>`}</div>
       <div class="txt">
         <span class="kicker">${esc(e.kicker || "")}</span>
         <h3>${esc(e.title)}</h3>
         <p>${esc(e.lede)}</p>
         <span class="when">${esc(e.when || "")}</span>
-        <button class="btn btn-ghost btn-sm" type="button" data-notify="${e.id}">Notify me</button>
+        <div class="actions"><button class="btn btn-ghost btn-sm" type="button" data-notify="${e.id}">Notify me</button>${e.slug ? `<a class="btn-link-sm" href="${ROOT}${e.slug}/">Details →</a>` : ""}</div>
       </div>
     </article>`).join("");
 }
 
 function renderPast() {
   $("#past-list").innerHTML = M.PAST.map((w, i) => `
-    <article>
-      <div class="art" id="past-art-${i}">${w.photos.length ? `<button class="zoom" type="button" data-view="${w.photos[0]}" aria-label="View ${esc(w.title)} photo"><img src="${w.photos[0]}" alt="${esc(w.title)}" loading="lazy"></button>` : eventArt(w.art) + `<span class="ph-note">Photos coming soon</span>`}</div>
+    <article class="reveal">
+      <div class="art" id="past-art-${i}">${w.photos.length ? `<button class="zoom" type="button" data-view="${asset(w.photos[0])}" aria-label="View ${esc(w.title)} photo"><img src="${asset(w.photos[0])}" alt="${esc(w.title)}" loading="lazy"></button>` : eventArt(w.art) + `<span class="ph-note">Photos coming soon</span>`}</div>
       <div class="txt"><h3>${esc(w.title)}</h3><p>${esc(w.detail)}</p></div>
-      ${w.photos.length > 1 ? `<div class="thumbs">${w.photos.map((p, j) => `<button type="button" aria-label="Photo ${j + 1}" aria-pressed="${j === 0}" data-past="${i}" data-src="${p}"><img src="${p}" alt="" loading="lazy"></button>`).join("")}</div>` : ""}
+      ${w.photos.length > 1 ? `<div class="thumbs">${w.photos.map((p, j) => `<button type="button" aria-label="Photo ${j + 1}" aria-pressed="${j === 0}" data-past="${i}" data-src="${asset(p)}"><img src="${asset(p)}" alt="" loading="lazy"></button>`).join("")}</div>` : ""}
     </article>`).join("");
+}
+
+function renderEventPage(e) {
+  const t = (typeof PASS_THEMES !== "undefined" && PASS_THEMES[e.theme]) || { bg1: "#26305E", bg2: "#11152E" };
+  const isOpen = e.status === "open", img = e.poster || e.flyer;
+  const hero = $("#event-hero");
+  hero.style.background = `radial-gradient(120% 80% at 70% 0%, ${t.bg1}, ${t.bg2})`;
+  hero.innerHTML = `
+    <canvas class="fx" data-theme="${e.theme}" aria-hidden="true"></canvas>
+    <div class="wrap">
+      <div class="left">
+        ${img ? `<button class="zoom" type="button" data-view="${asset(img)}" aria-label="View ${esc(e.title)} poster"><img src="${asset(img)}" alt="${esc(e.title)} poster" width="900" height="1350"></button>` : eventArt(e.theme)}
+        <div class="hosted">${hostedBox()}</div>
+      </div>
+      <div class="right">
+        <span class="chip">${isOpen ? "Booking open" : "Coming soon"}${e.kicker ? " · " + esc(e.kicker) : ""}</span>
+        <h1>${esc(e.title)}</h1>
+        ${whenRow(e)}
+        ${venueRow(e)}
+        ${countdownEl(e)}
+        <div class="regcard">
+          <div class="rh">${isOpen ? "Registration" : "Booking opens soon"}</div>
+          <div class="rb">
+            ${isOpen ? `<div class="price"><b>${rupee(e.fee)}</b><span>per child · ages ${esc(e.ages)}</span></div>
+              <p style="margin:0;opacity:.85">Pre-booking is a must. Pay securely and get each child's Party Pass straight away.</p>`
+            : `<p style="margin:0">Details and booking for this event open soon. Tap "Notify me" and we'll message you the moment booking opens.</p>`}
+            <div class="actions">
+              ${isOpen ? `<a class="btn btn-orange btn-glow" href="#book" data-book="${e.id}">Book your place</a>` : `<button class="btn btn-orange" type="button" data-notify="${e.id}">Notify me</button>`}
+              ${calendarMenu(e)}
+              <a class="btn btn-line btn-sm" href="${waLink(`${e.title} by MONACHI: ${pageUrl(e)}`, "")}" target="_blank" rel="noopener">Share on WhatsApp</a>
+            </div>
+          </div>
+        </div>
+        <div class="about">
+          <h2>About this event</h2>
+          <p>${esc(e.lede || "")}</p>
+          ${e.activities ? `<h2>Highlights</h2><ul class="hl">${e.activities.map((a) => `<li>${esc(a)}</li>`).join("")}</ul>` : ""}
+          ${e.award ? `<p><b style="color:#FFD166">★</b> ${esc(e.award)}</p>` : ""}
+          <p><a class="morelink" href="${ROOT || "./"}">See all MONACHI events, workshops and private parties →</a></p>
+        </div>
+      </div>
+    </div>`;
+  hero.hidden = false;
+  document.querySelectorAll(".main-only").forEach((el) => (el.hidden = true));
+  if (!isOpen) {
+    $("#book").hidden = true;
+    document.querySelectorAll('.top nav a[href="#book"], .top nav a[href="#mypass"]').forEach((l) => (l.href = ROOT + l.getAttribute("href")));
+  }
 }
 
 function renderParties() {
@@ -287,8 +395,11 @@ document.addEventListener("click", (e) => {
   if (t) { const i = t.dataset.past; $(`#past-art-${i} img`).src = t.dataset.src; $(`#past-art-${i} .zoom`).dataset.view = t.dataset.src; t.parentElement.querySelectorAll("button").forEach((x) => x.setAttribute("aria-pressed", String(x === t))); }
 });
 
+const PAGE_EVENT = EVENT_ID ? evById(EVENT_ID) : null;
 renderEvents(); renderPast(); renderParties();
-$("#event").innerHTML = open.map((e) => `<option value="${e.id}">${esc(e.title)} · ${esc(e.date)}</option>`).join("");
+if (PAGE_EVENT) renderEventPage(PAGE_EVENT);
+const bookable = PAGE_EVENT && PAGE_EVENT.status === "open" ? [PAGE_EVENT] : open;
+$("#event").innerHTML = bookable.map((e) => `<option value="${e.id}">${esc(e.title)} · ${esc(e.date)}</option>`).join("");
 $("#add-kid").addEventListener("click", addKid);
 $("#event").addEventListener("change", updateTotal);
 addKid();
@@ -312,3 +423,32 @@ $("#how-steps").innerHTML = (ONLINE ? [
 const h = location.hash.slice(1); if (open.some((e) => e.id === h)) $("#event").value = h;
 updateTotal();
 try { const last = JSON.parse(localStorage.getItem("monachi-last") || "null"); if (last) { $("#f-code").value = last.code; $("#f-phone").value = last.phone; } } catch (_) {}
+
+/* ---------- Hosted by, countdowns, calendar menu, motion, phone booking bar ---------- */
+$("#hosted-side").innerHTML = hostedBox();
+tickCountdowns(); setInterval(tickCountdowns, 30000);
+document.addEventListener("click", (ev) => {
+  const c = ev.target.closest("[data-cal]");
+  document.querySelectorAll(".calmenu .menu").forEach((m) => { if (!c || m !== c.nextElementSibling) { m.hidden = true; m.previousElementSibling.setAttribute("aria-expanded", "false"); } });
+  if (c) { const m = c.nextElementSibling; m.hidden = !m.hidden; c.setAttribute("aria-expanded", String(!m.hidden)); }
+  const i = ev.target.closest("[data-ics]"); if (i) downloadIcs(evById(i.dataset.ics));
+});
+if (window.MonachiFx) MonachiFx.startAll();
+document.querySelectorAll(".main-only .section-title, .party, .panel, .find, .side").forEach((el) => el.classList.add("reveal"));
+if ("IntersectionObserver" in window) {
+  const io = new IntersectionObserver((list) => list.forEach((x) => { if (x.isIntersecting) { x.target.classList.add("in"); io.unobserve(x.target); } }), { rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+} else document.querySelectorAll(".reveal").forEach((el) => el.classList.add("in"));
+
+const barEvent = PAGE_EVENT ? (PAGE_EVENT.status === "open" ? PAGE_EVENT : null) : open[0];
+if (barEvent) {
+  document.body.classList.add("has-bookbar");
+  $("#bb-title").textContent = barEvent.title;
+  $("#bb-sub").textContent = `${barEvent.short || barEvent.date} · ${rupee(barEvent.fee)} per child`;
+  $("#bb-btn").dataset.book = barEvent.id;
+  const sync = () => {
+    const r = $("#book").getBoundingClientRect(), bookInView = r.top < window.innerHeight * 0.85 && r.bottom > 0;
+    $("#bookbar").classList.toggle("show", window.scrollY > 420 && !bookInView);
+  };
+  window.addEventListener("scroll", sync, { passive: true }); window.addEventListener("resize", sync); sync();
+} else $("#bookbar").remove();

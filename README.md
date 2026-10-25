@@ -25,8 +25,20 @@ pays with the Google Pay QR → MONACHI confirms and sends the pass.
 | `config.js` | **edit this**: events, prices shown, contact details, backend URL, Razorpay Key ID |
 | `app.js` | booking, payment, notify and enquiry logic |
 | `pass.js` | Party Pass design and the illustrated event cards |
+| `fx.js` | festive animated backgrounds per event theme |
+| `tools/build-event-pages.js` | creates the per-event pages |
 | `apps-script/Code.gs` | free backend: paste into Google Apps Script (see SETUP.md) |
 | `assets/` | poster, QR code, workshop photos |
+
+## Event pages
+Each event with a `slug` in `config.js` gets its own page, e.g. `halloween/` and `diwali/`, built from `index.html`.
+After editing `index.html` or adding an event, rebuild them:
+
+```
+node tools/build-event-pages.js
+```
+
+`fx.js` draws the festive animated backgrounds (bats, diya sparks, snow, fireworks, sprinkles) for each event theme.
 
 Add workshop photos to `assets/workshops/` and list them under `PAST` in `config.js`.
 Use photos of crafts and hands, or get parents' permission before showing children's faces.
