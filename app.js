@@ -110,7 +110,7 @@ function renderEvents() {
       <div class="txt">
         <span class="kicker">${esc(e.kicker || "")}</span>
         <h3>${esc(e.title)}</h3>
-        <p>${esc(e.lede)}</p>
+        <p>${esc(e.blurb || e.lede)}</p>
         <span class="when">${esc(e.when || "")}</span>
         <div class="actions"><button class="btn btn-ghost btn-sm" type="button" data-notify="${e.id}">Notify me</button>${e.slug ? `<a class="btn-link-sm" href="${ROOT}${e.slug}/">Details →</a>` : ""}</div>
       </div>
@@ -139,17 +139,17 @@ function renderEventPage(e) {
         <div class="hosted">${hostedBox()}</div>
       </div>
       <div class="right">
-        <span class="chip">${isOpen ? "Booking open" : "Coming soon"}${e.kicker ? " · " + esc(e.kicker) : ""}</span>
+        <span class="chip">${isOpen ? "Booking open" : esc(e.badge || "Coming soon")}${e.kicker ? " · " + esc(e.kicker) : ""}</span>
         <h1>${esc(e.title)}</h1>
         ${whenRow(e)}
         ${venueRow(e)}
         ${countdownEl(e)}
         <div class="regcard">
-          <div class="rh">${isOpen ? "Registration" : "Booking opens soon"}</div>
+          <div class="rh">${isOpen ? "Registration" : esc(e.badge || "Booking opens soon")}</div>
           <div class="rb">
             ${isOpen ? `<div class="price"><b>${rupee(e.fee)}</b><span>per child · ages ${esc(e.ages)}</span></div>
               <p style="margin:0;opacity:.85">Pre-booking is a must. Pay securely and get each child's Party Pass straight away.</p>`
-            : `<p style="margin:0">Details and booking for this event open soon. Tap "Notify me" and we'll message you the moment booking opens.</p>`}
+            : `<p style="margin:0">${esc(e.soonNote || "Details and booking for this event open soon. Tap \"Notify me\" and we'll message you the moment booking opens.")}</p>`}
             <div class="actions">
               ${isOpen ? `<a class="btn btn-orange btn-glow" href="#book" data-book="${e.id}">Book your place</a>` : `<button class="btn btn-orange" type="button" data-notify="${e.id}">Notify me</button>`}
               ${calendarMenu(e)}

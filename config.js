@@ -40,13 +40,18 @@ window.MONACHI = {
     },
     {
       id: "diwali-2026", slug: "diwali", code: "DW", status: "soon", theme: "diwali",
-      title: "Diwali DIY Party", kicker: "Kids & family",
-      lede: "Diya painting, rangoli and festive crafts for children and families.",
-      when: "November 2026 · date coming soon",
-      venue: "Breeze & Beans café", city: "Haridwar",
+      title: "Diwali Family Celebration", kicker: "Family & friends",
+      badge: "Passes available shortly",
+      soonNote: "Booking passes will be available shortly. Tap \"Notify me\" and we'll message you the moment they open.",
+      blurb: "A festive evening of lights, music, food, shopping and crafts for the whole family and friends.",
+      lede: "A festive evening for the whole family and friends: lights, laughter and togetherness. Presented by MONACHI in collaboration with Breeze & Beans. Come, celebrate, shop, eat and make memories!",
+      date: "Wednesday, 4 November 2026", short: "Wed 4 Nov 2026", time: "6:00 – 11:00 PM",
+      start: "2026-11-04T18:00:00+05:30", end: "2026-11-04T23:00:00+05:30",
+      when: "Wed 4 Nov 2026 · 6–11 PM · Breeze & Beans",
+      venue: "Breeze & Beans Café, Kankhal", city: "Haridwar",
       mapUrl: "https://maps.app.goo.gl/gDgER1nTx5WmNH6Z6",
-      activities: ["Diya painting", "Rangoli", "Festive crafts", "Snacks"],
-      flyer: "assets/flyers/diwali.jpg"
+      activities: ["Live music", "Food", "Shopping from local small businesses", "Craft fest: Diwali décor ideas", "Family fun activities"],
+      flyer: "assets/flyers/diwali-family.jpg"
     },
     {
       id: "baking-2026", slug: "little-baker", code: "BK", status: "soon", theme: "baking",
