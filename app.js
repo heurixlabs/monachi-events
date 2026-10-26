@@ -3,7 +3,9 @@
 // Manual mode (not set yet): book → WhatsApp message → UPI QR → pass sent by MONACHI.
 
 const M = window.MONACHI;
-const ONLINE = Boolean(M.BACKEND_URL && M.RAZORPAY_KEY_ID);
+const TEST_PAGE = document.documentElement.dataset.test === "1";
+const BACKEND = M.BACKEND_URL || (TEST_PAGE ? M.TEST_BACKEND_URL : "");
+const ONLINE = Boolean(BACKEND && M.RAZORPAY_KEY_ID);
 const $ = (s, r = document) => r.querySelector(s);
 const rupee = (n) => "₹" + Number(n || 0).toLocaleString("en-IN");
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
@@ -75,7 +77,7 @@ function hostedBox() {
 }
 
 async function api(action, data) {
-  const res = await fetch(M.BACKEND_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ action, ...data }) });
+  const res = await fetch(BACKEND, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify({ action, ...data }) });
   const json = await res.json();
   if (!json.ok) throw new Error(json.error || "Something went wrong.");
   return json;
@@ -365,7 +367,7 @@ $("#n-form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const m = $("#n-msg"), name = $("#n-name").value.trim(), phone = cleanPhone($("#n-phone").value), email = $("#n-email").value.trim();
   if (name.length < 2 || !phoneOk(phone) || (email && !emailOk(email))) { m.className = "msg err"; m.textContent = "Add your name and a 10-digit WhatsApp number (and check the email, if you added one)."; return; }
-  if (!M.BACKEND_URL) { window.open(waLink(`Hi MONACHI, please notify me when booking opens for the ${notifyEvent.title}. Name: ${name}, WhatsApp: +91 ${phone}${email ? `, Email: ${email}` : ""}`), "_blank", "noopener"); m.className = "msg ok"; m.textContent = "Send the WhatsApp message that opened and you're on the list."; return; }
+  if (!BACKEND) { window.open(waLink(`Hi MONACHI, please notify me when booking opens for the ${notifyEvent.title}. Name: ${name}, WhatsApp: +91 ${phone}${email ? `, Email: ${email}` : ""}`), "_blank", "noopener"); m.className = "msg ok"; m.textContent = "Send the WhatsApp message that opened and you're on the list."; return; }
   m.className = "msg"; m.textContent = "Saving…";
   try { await api("notify", { eventId: notifyEvent.id, eventTitle: notifyEvent.title, name, phone, email }); m.className = "msg ok"; m.textContent = "You're on the list. We'll message you when booking opens."; $("#n-form").reset(); }
   catch (_) { m.className = "msg err"; m.textContent = "Couldn't save that. Please try again or message us on WhatsApp."; }
@@ -377,7 +379,7 @@ $("#enq-form").addEventListener("submit", async (e) => {
   const m = $("#enq-msg"), type = $("#q-type").selectedOptions[0].textContent, name = $("#q-name").value.trim(), phone = cleanPhone($("#q-phone").value), email = $("#q-email").value.trim();
   const d = { type, name, phone, email, date: $("#q-date").value, guests: $("#q-guests").value.trim(), ageGroup: $("#q-age").value, notes: $("#q-notes").value.trim() };
   if (name.length < 2 || !phoneOk(phone) || (email && !emailOk(email))) { m.className = "msg err"; m.textContent = "Add your name and a 10-digit WhatsApp number (and check the email, if you added one)."; return; }
-  if (!M.BACKEND_URL) {
+  if (!BACKEND) {
     window.open(waLink([`Hi MONACHI, I'd like to enquire about a ${type}.`, `Name: ${name}`, `WhatsApp: +91 ${phone}`, email && `Email: ${email}`, d.date && `Preferred date: ${d.date}`, d.guests && `Guests: ${d.guests}`, `Age group: ${d.ageGroup}`, d.notes && `Notes: ${d.notes}`].filter(Boolean).join("\n")), "_blank", "noopener");
     m.className = "msg ok"; m.textContent = "Send the WhatsApp message that opened and we'll get back to you."; return;
   }

@@ -35,3 +35,16 @@ for (const e of M.EVENTS.filter((x) => x.slug)) {
   fs.writeFileSync(path.join(root, e.slug, "index.html"), html);
   console.log(`built ${e.slug}/index.html`);
 }
+
+// Hidden test page: Halloween booking in Razorpay Test Mode (fake payments). Not linked anywhere, not indexed.
+{
+  const e = M.EVENTS.find((x) => x.slug === "halloween");
+  let html = fs.readFileSync(path.join(root, e.slug, "index.html"), "utf8");
+  html = html.replace(`data-event="${e.id}"`, `data-event="${e.id}" data-test="1"`);
+  html = html.replace(/<title>[^<]*<\/title>/, '<title>TEST · MONACHI booking test</title>\n<meta name="robots" content="noindex, nofollow">');
+  html = html.replace("<body>", `<body>
+<div style="position:sticky;top:0;z-index:40;background:#C0263F;color:#fff;text-align:center;font:600 14px/1.4 Poppins,system-ui,sans-serif;padding:10px 16px">TEST PAGE · Razorpay Test Mode · no real money is charged · bookings here are not real</div>`);
+  fs.mkdirSync(path.join(root, "test-booking"), { recursive: true });
+  fs.writeFileSync(path.join(root, "test-booking", "index.html"), html);
+  console.log("built test-booking/index.html");
+}
