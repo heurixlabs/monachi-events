@@ -12,6 +12,8 @@
  *   RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET, OWNER_EMAIL, OWNER_WHATSAPP (e.g. 917217054807), CALLMEBOT_APIKEY (optional)
  */
 
+const SITE_URL = "https://heurixlabs.github.io/monachi-events/";
+
 // Real prices and details. Keep in sync with config.js on the website.
 const EVENTS = {
   "halloween-2026": {
@@ -113,7 +115,8 @@ function finalize(row, paymentId) {
     SpreadsheetApp.flush();
     const paid = readRow(row);
     try { emailParent(paid); sh.getRange(row, COL["Pass emailed"]).setValue("Yes"); } catch (err) { console.error("Parent email failed", err); sh.getRange(row, COL["Pass emailed"]).setValue("Failed: " + err.message); }
-    alertOwner(`New booking PAID ✅\n${paid.code} · ${paid.event}\n${paid.parent} · +91 ${paid.phone}\n${paid.email}\nChildren: ${paid.kidsText}\nAmount: ₹${paid.amount}`,
+    alertOwner(`New booking PAID ✅\n${paid.code} · ${paid.event}\n${paid.parent} · +91 ${paid.phone}\n${paid.email}\nChildren: ${paid.kidsText}\nAmount: ₹${paid.amount}\n\n` +
+      `Send the parent a WhatsApp confirmation (one tap, then press send):\n${parentWhatsAppLink(paid)}`,
       `New booking paid: ${paid.code} · ${paid.parent} · ₹${paid.amount}`);
   } finally { lock.releaseLock(); }
 }
@@ -186,6 +189,19 @@ function passHtml(rec, ev, kid, i) {
     </div>
     <div style="text-align:center;font-size:13px;margin-top:18px">WhatsApp +91 72170 54807 · Instagram @monachi.crafts</div>
   </div>`;
+}
+
+// Free "click to chat" link that opens WhatsApp with a ready confirmation for the parent.
+// Automatic WhatsApp sending to parents needs Meta's paid WhatsApp Business API.
+function parentWhatsAppLink(rec) {
+  const ev = EVENTS[rec.eventId] || {};
+  const names = rec.kids.map((k) => k.name).join(", ");
+  const msg = `Hi ${rec.parent}! 🎉 Your booking for the MONACHI ${rec.event} is confirmed.\n\n` +
+    `Booking: ${rec.code}\nChild${rec.kids.length > 1 ? "ren" : ""}: ${names}\nPaid: ₹${rec.amount}\n` +
+    `${ev.date || ""}, ${ev.time || ""}\nVenue: ${ev.venue || ""}\n\n` +
+    `Your Party Pass has been emailed to ${rec.email}. You can also download it any time at ${SITE_URL}#mypass (booking code + this number).\n\n` +
+    `Please show the pass at the entry. See you there! – Team MONACHI`;
+  return "https://wa.me/91" + rec.phone + "?text=" + encodeURIComponent(msg);
 }
 
 function alertOwner(text, subject) {
