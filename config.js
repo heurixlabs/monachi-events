@@ -3,15 +3,9 @@
 window.MONACHI = {
   // Paste the Google Apps Script "Web app" URL here after setup (see SETUP.md).
   // While it is empty the site runs in WhatsApp + UPI mode (no online payment, no automatic pass).
-  BACKEND_URL: "",
+  BACKEND_URL: "https://script.google.com/macros/s/AKfycbxwDjusQhGyCM2Zq5JoTft-4ItwB8pt9bYNjiAsPGpdbkRmUHJTYJS8pATlEfOzRob_tg/exec",
 
-  // Used only by the hidden test page (test-booking/) while Razorpay is in Test Mode.
-  // When Razorpay approves the account: put the live Key ID below and copy this URL into BACKEND_URL.
-  TEST_BACKEND_URL: "https://script.google.com/macros/s/AKfycbxwDjusQhGyCM2Zq5JoTft-4ItwB8pt9bYNjiAsPGpdbkRmUHJTYJS8pATlEfOzRob_tg/exec",
-
-  // Razorpay Key ID (starts with rzp_test_ or rzp_live_). This one is safe to publish.
-  // NEVER put the Key Secret here. It goes only into Apps Script → Script properties.
-  RAZORPAY_KEY_ID: "rzp_test_Ts4Ojh2zAd43IX",
+  RAZORPAY_KEY_ID: "rzp_live_TsYOCsFjK2Vvmx",
 
   WHATSAPP: "917217054807",          // country code + number, digits only
   EMAIL: "monachi.bookings@gmail.com",

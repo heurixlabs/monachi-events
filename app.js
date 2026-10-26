@@ -3,8 +3,7 @@
 // Manual mode (not set yet): book → WhatsApp message → UPI QR → pass sent by MONACHI.
 
 const M = window.MONACHI;
-const TEST_PAGE = document.documentElement.dataset.test === "1";
-const BACKEND = M.BACKEND_URL || (TEST_PAGE ? M.TEST_BACKEND_URL : "");
+const BACKEND = M.BACKEND_URL;
 const ONLINE = Boolean(BACKEND && M.RAZORPAY_KEY_ID);
 const $ = (s, r = document) => r.querySelector(s);
 const rupee = (n) => "₹" + Number(n || 0).toLocaleString("en-IN");
@@ -236,7 +235,9 @@ $("#form").addEventListener("submit", async (e) => {
   e.preventDefault();
   const b = validate(); if (!b) return;
   if (ONLINE) return payOnline(b);
-  showManual(b);
+  // Razorpay is the only way to pay. If online payment isn't configured, don't fall back to the QR flow.
+  const m = $("#form-msg"); m.className = "msg err";
+  m.innerHTML = `Online booking is being set up. Please try again shortly or <a href="${waLink("Hi MONACHI, I'd like to book " + b.ev.title + ".")}" target="_blank" rel="noopener">message us on WhatsApp</a>.`;
 });
 
 /* ---------- Online: Razorpay ---------- */

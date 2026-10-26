@@ -1,0 +1,5 @@
+# Never upload keys or secrets
+*.csv
+rzp-key*
+*secret*
+.env
