@@ -17,7 +17,7 @@ const SITE_URL = "https://heurixlabs.github.io/monachi-events/";
 // Real prices and details. Keep in sync with config.js on the website.
 const EVENTS = {
   "halloween-2026": {
-    code: "HW", title: "Halloween Party", fee: 250, open: true,
+    code: "HW", title: "Halloween Party", fee: 250, open: false, // event over (31 Oct 2026)
     date: "Saturday, 31 October 2026", short: "Sat 31 Oct 2026", time: "5:00 – 7:00 PM",
     venue: "Sunbeam Pre School premises", minAge: 4, maxAge: 14
   }

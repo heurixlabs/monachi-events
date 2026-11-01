@@ -24,34 +24,6 @@ window.MONACHI = {
   // Prices here are for display only. The real price is set in apps-script/Code.gs.
   EVENTS: [
     {
-      id: "halloween-2026", slug: "halloween", code: "HW", status: "open", theme: "halloween",
-      title: "Halloween Party", kicker: "Kids party",
-      lede: "Spooky fun awaits! An evening of games, crafts and costumes for little monsters.",
-      date: "Saturday, 31 October 2026", short: "Sat 31 Oct 2026", time: "5:00 – 7:00 PM",
-      start: "2026-10-31T17:00:00+05:30", end: "2026-10-31T19:00:00+05:30",
-      ages: "4 – 14 years", minAge: 4, maxAge: 14, fee: 250,
-      venue: "Sunbeam Pre School premises", city: "Haridwar",
-      mapUrl: "https://maps.app.goo.gl/pyUiNYeGjpbrEBzr9",
-      activities: ["Fun Halloween games", "Snacks", "Craft activities", "Tattoo making"],
-      award: "Best Costume Award: the winner gets a special prize.",
-      poster: "assets/halloween-poster.jpg"
-    },
-    {
-      id: "diwali-2026", slug: "diwali", code: "DW", status: "soon", theme: "diwali",
-      title: "Diwali Family Celebration", kicker: "Family & friends",
-      badge: "Passes available shortly",
-      soonNote: "Booking passes will be available shortly. Tap \"Notify me\" and we'll message you the moment they open.",
-      blurb: "A festive evening of lights, music, food, shopping and crafts for the whole family and friends.",
-      lede: "A festive evening for the whole family and friends: lights, laughter and togetherness. Presented by MONACHI in collaboration with Breeze & Beans. Come, celebrate, shop, eat and make memories!",
-      date: "Wednesday, 4 November 2026", short: "Wed 4 Nov 2026", time: "6:00 – 11:00 PM",
-      start: "2026-11-04T18:00:00+05:30", end: "2026-11-04T23:00:00+05:30",
-      when: "Wed 4 Nov 2026 · 6–11 PM · Breeze & Beans",
-      venue: "Breeze & Beans Café, Kankhal", city: "Haridwar",
-      mapUrl: "https://maps.app.goo.gl/gDgER1nTx5WmNH6Z6",
-      activities: ["Live music", "Food", "Shopping from local small businesses", "Craft fest: Diwali décor ideas", "Family fun activities"],
-      flyer: "assets/flyers/diwali-family.jpg"
-    },
-    {
       id: "baking-2026", slug: "little-baker", code: "BK", status: "soon", theme: "baking",
       title: "Little Baker Bakery Workshop", kicker: "Kids workshop",
       lede: "Little chefs mix, bake and decorate treats, and make chocolates to take home.",
@@ -76,6 +48,7 @@ window.MONACHI = {
 
   // Previous workshops shown in the gallery. Add photos to assets/workshops/ and list them here.
   PAST: [
+    { title: "Halloween Party", detail: "31 October 2026 · games, crafts, tattoos and a Best Costume Award for our little monsters", photos: ["assets/halloween-poster.jpg"] },
     { title: "DIY Flower Workshop", detail: "Flowers made from pipe cleaners", photos: ["assets/workshops/flowers-1.jpg", "assets/workshops/flowers-2.jpg"] },
     { title: "Kids Baker Class", detail: "12 June 2026 · little chefs baked chocolate cookies", photos: ["assets/flyers/kids-baker-class-jun-2026.jpg", "assets/workshops/cookies-1.jpg", "assets/workshops/cookies-2.jpg"] },
     { title: "Clay Workshop", detail: "Kids sculpted their own superhero figures from clay", photos: ["assets/workshops/clay-1.jpg", "assets/workshops/clay-2.jpg"], art: "clay" },

@@ -402,6 +402,13 @@ const PAGE_EVENT = EVENT_ID ? evById(EVENT_ID) : null;
 renderEvents(); renderPast(); renderParties();
 if (PAGE_EVENT) renderEventPage(PAGE_EVENT);
 const bookable = PAGE_EVENT && PAGE_EVENT.status === "open" ? [PAGE_EVENT] : open;
+if (!bookable.length) {
+  // Nothing is open for booking: hide the empty form and the "Booking now" block, keep "Get your pass again".
+  if (!PAGE_EVENT) $("#events").hidden = true;
+  $("#form").hidden = true; $("#venue-box").hidden = true;
+  $("#book-h").textContent = "Bookings";
+  $("#book-sub").dataset.closed = "1";
+}
 $("#event").innerHTML = bookable.map((e) => `<option value="${e.id}">${esc(e.title)} · ${esc(e.date)}</option>`).join("");
 $("#add-kid").addEventListener("click", addKid);
 $("#event").addEventListener("change", updateTotal);
@@ -411,7 +418,7 @@ $("#contact-num").textContent = "+91 " + M.WHATSAPP.slice(2, 7) + " " + M.WHATSA
 $("#insta").textContent = "@" + M.INSTAGRAM; $("#insta").href = `https://www.instagram.com/${M.INSTAGRAM}/`;
 $("#email-hint").textContent = ONLINE ? "(your Party Pass is emailed here)" : "(optional)";
 $("#submit-btn").textContent = ONLINE ? "Continue to payment" : "Review booking";
-$("#book-sub").textContent = ONLINE ? "Pre-booking is a must. Pay securely online and get your Party Pass instantly." : "Pre-booking is a must. Fill this in, send it to us on WhatsApp and pay by UPI.";
+$("#book-sub").textContent = $("#book-sub").dataset.closed ? "No event is open for booking right now. Tap \"Notify me\" on a coming-soon event and we'll message you when passes open." : ONLINE ? "Pre-booking is a must. Pay securely online and get your Party Pass instantly." : "Pre-booking is a must. Fill this in, send it to us on WhatsApp and pay by UPI.";
 $("#how-steps").innerHTML = (ONLINE ? [
   ["Fill in the form", "Your name, WhatsApp number, email and each child's name and age."],
   ["Pay securely", "UPI, cards or net banking through Razorpay."],
